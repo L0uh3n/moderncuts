@@ -8,3 +8,6 @@ def home (request):
 
 def games (request):
     return render(request, 'games.html', {})
+
+def animes (request):
+    return render(request, 'animes.html', {})
