@@ -28,6 +28,21 @@
         <p>A escolha é sua!</p>
     </section>
 
+    <div>
+      <section>
+        {% block body %}
+        {% endblock %}
+      </section>
+    </div>
+
+    {% block content %}
+      <div class="content">
+        {% for c in usuario %}
+          {{c.nome}}<br>
+        {% endfor %}
+      </div>
+    {% endblock %}
+    
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </body>
   <script src="{% static 'scripts/script.js' %}"></script>

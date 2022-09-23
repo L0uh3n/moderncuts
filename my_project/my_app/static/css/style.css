@@ -66,7 +66,7 @@ p {
 #apresentation {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     backdrop-filter: blur(5px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(47, 48, 49, 0.75);
@@ -78,8 +78,46 @@ p {
     padding-bottom: 50px;
 }
 
+.register {
+    background-color: #555;
+    text-align: center;
+    color: white;
+}
+
 .content {
     padding: 16px;
+}
+
+.cad_user {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    backdrop-filter: blur(5px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(47, 48, 49, 0.75);
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.125);
+    color: white;
+    text-align: center;
+    width: 25%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    backdrop-filter: blur(5px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(47, 48, 49, 0.75);
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.125);
+    color: white;
+    text-align: center;
+    width: 25%;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .sticky {
