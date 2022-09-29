@@ -1,49 +1,78 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{% static 'imgs/favicon.ico' %}" type="image/x-icon" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <title>Modern Cuts</title>
-  </head>
-  <body>
-    <div id="navbar">
-      <img src="{% static 'imgs/logo.png' %}" />
-      <div id="navbar2">
-        <a href="#servicos">Serviços</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#quem_somos">Quem somos</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#contatos">Contatos</a>
-        <a href="#agendar">Agendar</a>
-      </div>
-    </div>
 
-    <section id="apresentation">
-        <h1>Modern Cuts</h1>
-        <p><i>Seu cabelo, sua barba, seu estilo.</i></p>
-        <p>A escolha é sua!</p>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="{% static 'imgs/favicon.ico' %}" type="image/x-icon" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <title>Modern Cuts</title>
+</head>
 
-    <div>
-      <section>
-        {% block body %}
-        {% endblock %}
-      </section>
-    </div>
-
-    {% block content %}
-      <div class="content">
-        {% for c in usuario %}
-          {{c.nome}}<br>
-        {% endfor %}
-      </div>
-    {% endblock %}
+<body>
+  <nav id="navbar">
+    <h1>Moder Cuts</h1>
+    <a href="#servicos">Serviços</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#quem_somos">Quem somos</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#contatos">Contatos</a>
+    <a href="#agendar">Agendar</a>
     
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-  </body>
-  <script src="{% static 'scripts/script.js' %}"></script>
+    <div id="register">
+      <a href="#login">Login</a>
+      <a href="#cadastrar">Cadastrar</a>
+    </div>
+  </nav>
+
+  <div name="apresentacao">
+    <section id="apresentacao">
+      <h1>Modern Cuts</h1>
+      <p><i>Seu cabelo, sua barba, seu estilo.</i></p>
+      <p>A escolha é sua!</p>
+    </section>
+  </div>
+
+  <div name="servicos">
+    <section id="servicos">
+      <h1>Serviços aqui</h1>
+    </section>
+  </div>
+
+  <div name="produtos">
+    <section id="produtos">
+      <h1>Produtos aqui</h1>
+    </section>
+  </div>
+
+  <div name="quem_somos">
+    <section id="quem_somos">
+      <h1>Quem somos aqui</h1>
+    </section>
+  </div>
+
+  <div name="galeria">
+    <section id="galeria">
+      <h1>Galeria aqui</h1>
+    </section>
+  </div>
+
+  <div name="contatos">
+    <section id="contatos">
+      <h1>Contatos aqui</h1>
+    </section>
+  </div>
+
+  <div name="agendar">
+    <section id="agendar">
+      <h1>Agendar aqui</h1>
+    </section>
+  </div>
+
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+</body>
+<script src="{% static 'scripts/script.js' %}"></script>
 </html>
