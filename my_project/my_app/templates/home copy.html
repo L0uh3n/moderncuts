@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'imgs/favicon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Modern Cuts</title>
+  </head>
+  <body>
+    <div id="navbar">
+      <img src="{% static 'imgs/logo.png' %}" />
+      <div id="navbar2">
+        <a href="#servicos">Serviços</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#quem_somos">Quem somos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contatos">Contatos</a>
+        <a href="#agendar">Agendar</a>
+      </div>
+    </div>
+
+    <section id="apresentation">
+        <h1>Modern Cuts</h1>
+        <p><i>Seu cabelo, sua barba, seu estilo.</i></p>
+        <p>A escolha é sua!</p>
+    </section>
+
+    <div>
+      <section>
+        {% block body %}
+        {% endblock %}
+      </section>
+    </div>
+
+    {% block content %}
+      <div class="content">
+        {% for c in usuario %}
+          {{c.nome}}<br>
+        {% endfor %}
+      </div>
+    {% endblock %}
+    
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  </body>
+  <script src="{% static 'scripts/script.js' %}"></script>
+</html>
