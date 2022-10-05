@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wo*@c2d=(#h4oz-o++(pp8#*jd06ambrd0@#h_4fnaky1xxxzn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'l0uh3n.pythonanywhere.com']
 
 
 # Application definition
@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'my_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my_project',
+        'NAME': 'moderncuts',
         'USER': 'root',
-        'PASSWORD': 'Senai2019,',
+        'PASSWORD': 'apenasumasenhaLH99',
         'HOST': 'localhost',
         'PORT': '3306',
     }

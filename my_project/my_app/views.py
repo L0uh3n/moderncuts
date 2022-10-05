@@ -7,10 +7,10 @@ def home(request):
 	tabela = Usuarios.objects.all()
 	return render(request, 'home.html', {'usuario': tabela})
 
-def games (request):
-    return render(request, 'games.html', {})
+def login (request):
+    return render(request, 'login.html', {})
 
-def register(request):
+def register (request):
 	data = {}
 	data['form'] = UsersForm()
 	return render(request, 'register.html', data)
