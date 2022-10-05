@@ -13,18 +13,17 @@
 
 <body>
   <nav id="navbar">
-    <h1>Moder Cuts</h1>
-    <a href="#servicos">Serviços</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#quem_somos">Quem somos</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#contatos">Contatos</a>
-    <a href="#agendar">Agendar</a>
-    
-    <div id="register">
-      <a href="{% url 'login' %}">Login</a>
+    <div>
+      <a href="#servicos">Serviços</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#quem_somos">Quem somos</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contatos">Contatos</a>
+      <a href="#agendar">Agendar</a>
     </div>
+    <a id="client_login" href="{% url 'login' %}">Login</a>
   </nav>
+
 
   <div name="apresentacao">
     <section id="apresentacao">
@@ -74,4 +73,5 @@
 
 </body>
 <script src="{% static 'scripts/script.js' %}"></script>
+
 </html>

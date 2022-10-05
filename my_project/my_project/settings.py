@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'moderncuts',
         'USER': 'root',
-        'PASSWORD': 'apenasumasenhaLH99',
+        'PASSWORD': 'Senai2019,',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'pt-gr'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
