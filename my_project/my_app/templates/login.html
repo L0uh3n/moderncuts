@@ -13,8 +13,8 @@
         <h1>LOGIN</h1>
         <form class="login_form" method="post" action="/dolog/">
             {% csrf_token %}
-            <div class="form-group mt-4">Nome de usuario: {{form.usuario}}</div><br>
-            <div class="form-group mt-4">Senha: {{form.senha}}</div><br>
+            <div class="form-group mt-4">Nome de usuario: {{login.usuario}}</div><br>
+            <div class="form-group mt-4">Senha: {{login.senha}}</div><br>
             <button type="submit">Entrar</button>
         </form>
         <p>Ainda não possui uma conta?</p>

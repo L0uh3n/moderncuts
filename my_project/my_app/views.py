@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from my_app.forms import ClientForm
+from my_app.forms import ClientForm, LoginForm
 from my_app.models import usuario
 # Create your views here.
 
@@ -9,7 +9,7 @@ def home(request):
 
 def login (request):
 	data = {}
-	data['form'] = ClientForm()
+	data['login'] = LoginForm()
 	return render(request, 'login.html', data)
 
 def register (request):
@@ -33,8 +33,6 @@ def dolog(request):
 	form = ClientForm(request.POST or None)
 	erro = ''
 	for c in users:
-		if form['usuario'].data != c.usuario and form['senha'].data != c.senha:
-			erro = 'Username or password are incorrect'
-	if form.is_valid() and erro == '':
-		form.save()
-	return redirect('home')
+		if form['usuario'].data == c.usuario and form['senha'].data == c.senha:
+			return redirect('home')
+

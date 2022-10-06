@@ -10,3 +10,10 @@ class ClientForm(ModelForm):
         model = usuario
         widgets = {'password': forms.PasswordInput(),}
         fields = ['cpf', 'nome', 'sobrenome', 'data_nasc', 'usuario', 'senha', 'email', 'num_telefone']
+
+class LoginForm(ModelForm):
+    senha = forms.CharField(widget=forms.PasswordInput)
+    class Meta:
+        model = usuario
+        widgets = {'password': forms.PasswordInput(),}
+        fields = ['usuario', 'senha']
