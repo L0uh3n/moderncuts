@@ -13,7 +13,6 @@
         <h1>CADASTRO</h1>
         <form class="register_form" method="post" action="/docad/">
             {% csrf_token %}
-            <div class="form-group mt-4">CPF: {{form.cpf}}</div><br>
             <div class="form-group mt-4">Nome: {{form.nome}}</div><br>
             <div class="form-group mt-4">Sobrenome: {{form.sobrenome}}</div><br>
             <div class="form-group mt-4">Data de nascimento: {{form.data_nasc}}</div><br>
@@ -25,4 +24,5 @@
         </form>
     </div>
 </body>
+<!-- <script src="{% static 'scripts/register.js' %}"></script> -->
 </html>

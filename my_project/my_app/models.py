@@ -1,6 +1,4 @@
 from django.db import models
-from cpf_field.models import CPFField
-from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -49,7 +47,6 @@ from django.utils.translation import gettext_lazy as _
 #     endereco_id = models.CharField(max_length=16)
 
 class usuario(models.Model):
-    cpf = CPFField('cpf', unique=True)
     nome = models.CharField(max_length=50)
     sobrenome = models.CharField(max_length=100)
     data_nasc = models.DateField()
