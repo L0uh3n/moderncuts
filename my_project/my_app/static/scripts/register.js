@@ -1,4 +1,4 @@
-function regex_cel(evento){
+function regex_telefone(evento){
     const padrao = /[0-9]/
     var tecla = evento.key
     if(!padrao.test(tecla)){
@@ -6,7 +6,7 @@ function regex_cel(evento){
     }
 }
 
-function regex_cel(evento){
+function regex_telefone(evento){
     const padrao = /[0-9]/
     var tecla = evento.key
     if(!padrao.test(tecla)){

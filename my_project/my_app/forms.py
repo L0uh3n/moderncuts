@@ -6,7 +6,7 @@ from my_app.models import usuario
 class ClientForm(ModelForm):
     data_nasc = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     senha = forms.CharField(widget=forms.PasswordInput)
-    num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '(DDD) 9123-4567', 'onkeypress': 'regex_cel(event)', 'max_length':'14'}))
+    num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '(DDD) 9123-4567', 'onkeypress': 'regex_telefone(event)', 'maxlength': '15'}))
     class Meta:
         model = usuario
         widgets = {'password': forms.PasswordInput(),}

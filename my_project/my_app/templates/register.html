@@ -24,17 +24,5 @@
         </form>
     </div>
 </body>
-<script>
-    let num = document.getElementById("id_num_telefone");
-
-    num.setAttribute("onkeyup", "getLength()")
-
-    function getLength() {
-        if(num.value.length > 13) {
-            num.innerText = String(num.value).substring(0, 14)
-        }
-    }
-</script>
-
 <script src="{% static 'scripts/register.js' %}"></script>
 </html>
