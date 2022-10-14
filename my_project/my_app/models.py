@@ -53,7 +53,7 @@ class usuario(models.Model):
     usuario = models.CharField(max_length=30, unique=True)
     senha = models.CharField(max_length=30)
     email = models.EmailField(max_length=254, unique=True)
-    num_telefone = models.CharField(max_length=11,)
+    num_telefone = models.CharField(max_length=14)
 
 # class servicos(models.Model):
 #     nome_servico = models.CharField(max_length=16)
