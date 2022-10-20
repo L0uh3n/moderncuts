@@ -19,7 +19,7 @@ function regex_telefone(evento){
     if(txt.value.length==3){
         txt.value += ") "
     }
-    if(txt.value.length==9){
+    if(txt.value.length==10){
         txt.value += "-"
     }
 }

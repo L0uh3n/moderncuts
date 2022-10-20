@@ -4,8 +4,9 @@ from my_app.models import usuario
 # Create your views here.
 
 def home(request):
-	tabela = usuario.objects.all()
-	return render(request, 'home.html', {'usuario': tabela})
+	profile = {}
+	profile['uid'] = request.session['uid']
+	return render(request, 'home.html', profile)
 
 def login (request):
 	data = {}
@@ -40,11 +41,25 @@ def docad(request):
 	return render(request, 'register_sucess.html', data)
 
 def dolog(request):
-	users = usuario.objects.all()
-	form = ClientForm(request.POST or None)
-	for c in users:
-		if form['usuario'].data == c.usuario and form['senha'].data == c.senha:
-			return redirect('home')
-	for c in users:
-		if form['usuario'].data != c.usuario or form['senha'].data != c.senha:
+	if request.method == 'POST':
+		try:
+			user = usuario.objects.get(usuario=request.POST['usuario'])
+		except:
 			return redirect('login_error')
+		print(user)
+		if user.senha == request.POST['senha']:
+			request.session['uid'] = user.id
+			return redirect('home')
+		else:
+			return redirect('login_error')
+	else:
+		redirect('register')
+
+	# users = usuario.objects.all()
+	# form = ClientForm(request.POST or None)
+	# for c in users:
+	# 	if form['usuario'].data == c.usuario and form['senha'].data == c.senha:
+	# 		return redirect('home')
+	# for c in users:
+	# 	if form['usuario'].data != c.usuario or form['senha'].data != c.senha:
+	# 		return redirect('login_error')
