@@ -5,16 +5,22 @@ from my_app.models import usuario
 
 def home(request):
 	profile = {}
-	profile['uid'] = request.session['uid']
-	return render(request, 'home.html', profile)
+	try:
+		profile['perfil'] = usuario.objects.get(id=request.session['uid'])
+		return render(request, 'home.html', profile)
+	except:
+		return
 
 def login (request):
 	data = {}
 	data['login'] = LoginForm()
 	return render(request, 'login.html', data)
-'	'
+
 def login_error (request):
 	return render(request, 'login_error.html')
+
+def logout (request):
+	return render(request, 'logout.html')
 
 def register (request):
 	data = {}
@@ -43,7 +49,7 @@ def docad(request):
 def dolog(request):
 	if request.method == 'POST':
 		try:
-			user = usuario.objects.get(usuario=request.POST['usuario'])
+			user = usuario.objects.get(usuario=request.POST['usuario']) # select * from usuario where usuario
 		except:
 			return redirect('login_error')
 		print(user)
@@ -63,3 +69,12 @@ def dolog(request):
 	# for c in users:
 	# 	if form['usuario'].data != c.usuario or form['senha'].data != c.senha:
 	# 		return redirect('login_error')
+
+def doout(request):
+	if request.session['uid'] != "" or request.session['uid'] != None:
+		try:
+			del request.session['uid'] # finaliza a sessão
+			return redirect('doout')
+		except KeyError:
+			return redirect('home')
+	return redirect('home')

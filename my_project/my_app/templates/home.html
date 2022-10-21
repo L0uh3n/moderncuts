@@ -13,6 +13,7 @@
 
 <body>
   <nav id="navbar">
+    {% csrf_token %}
     <div>
       <a href="#servicos">Serviços</a>
       <a href="#produtos">Produtos</a>
@@ -21,9 +22,10 @@
       <a href="#contatos">Contatos</a>
       <a href="#agendar">Agendar</a>
     </div>
-    <a id="client_login" href="{% url 'login' %}">Login</a>
+    <a class="client_login" href="{% url 'login' %}">Login</a>
+    <button>Sair</button>
     <div>
-      User: {{uid}}
+      User: {{perfil.usuario}}
     </div>
   </nav>
 
