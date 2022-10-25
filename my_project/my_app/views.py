@@ -74,6 +74,7 @@ def doout(request):
 	if request.session['uid'] != "" or request.session['uid'] != None:
 		try:
 			del request.session['uid'] # finaliza a sessão
+			return redirect('logout')
 		except KeyError:
 			return redirect('home')
 	return redirect('home')

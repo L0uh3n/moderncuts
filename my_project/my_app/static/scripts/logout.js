@@ -1,1 +1,1 @@
-setTimeout(function () { window.location = '/home'; }, 3000);
+setTimeout(function () { window.location = '/'; }, 3000);
