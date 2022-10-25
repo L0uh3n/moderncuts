@@ -9,7 +9,7 @@ def home(request):
 		profile['perfil'] = usuario.objects.get(id=request.session['uid'])
 		return render(request, 'home.html', profile)
 	except:
-		return
+		return render(request, 'home.html')
 
 def login (request):
 	data = {}
@@ -74,7 +74,6 @@ def doout(request):
 	if request.session['uid'] != "" or request.session['uid'] != None:
 		try:
 			del request.session['uid'] # finaliza a sessão
-			return redirect('doout')
 		except KeyError:
 			return redirect('home')
 	return redirect('home')
