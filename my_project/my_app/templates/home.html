@@ -22,11 +22,17 @@
       <a href="#contatos">Contatos</a>
       <a href="#agendar">Agendar</a>
     </div>
-    <a class="client_login" href="{% url 'login' %}">Login</a>
+    
     <div>
+      {% if custom == 'Sair' %}
+      <a class="client_login" href="{% url 'doout' %}">{{custom}}</a>
+      <a class="client_login" href="{% url 'profile' %}">Editar perfil</a>
+      {% else %}
+      <a class="client_login" href="{% url 'login' %}">{{custom}}</a>
+      {% endif %}
       User: {{perfil.usuario}}
     </div>
-    <a class="client_login" href="{% url 'doout' %}">Logout</a>
+    
   </nav>
 
   <div name="apresentacao">

@@ -12,4 +12,6 @@ urlpatterns = [
     path('docad/', views.docad, name='docad'),
     path('dolog/', views.dolog, name='dolog'),
     path('doout/', views.doout, name='doout'),
+    path('profile/', views.profile, name='profile'),
+    path('doupdate/', views.doupdate, name='doupdate'),
 ]

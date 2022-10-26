@@ -13,13 +13,13 @@
         <h1>CADASTRO</h1>
         <form class="register_form" method="post" action="/docad/">
             {% csrf_token %}
-            <div class="form-group mt-4">Nome: {{form.nome}}</div><br>
-            <div class="form-group mt-4">Sobrenome: {{form.sobrenome}}</div><br>
-            <div class="form-group mt-4">Data de nascimento: {{form.data_nasc}}</div><br>
-            <div class="form-group mt-4">Nome de usuario: {{form.usuario}}</div><br>
-            <div class="form-group mt-4">Senha: {{form.senha}}</div><br>
-            <div class="form-group mt-4">Email: {{form.email}}</div><br>
-            <div class="form-group mt-4">Número de telefone: {{form.num_telefone}}</div><br>
+            <div class="nothing">Nome: {{form.nome}}</div><br>
+            <div class="nothing">Sobrenome: {{form.sobrenome}}</div><br>
+            <div class="nothing">Data de nascimento: {{form.data_nasc}}</div><br>
+            <div class="nothing">Nome de usuario: {{form.usuario}}</div><br>
+            <div class="nothing">Senha: {{form.senha}}</div><br>
+            <div class="nothing">Email: {{form.email}}</div><br>
+            <div class="nothing">Número de telefone: {{form.num_telefone}}</div><br>
             <button type="submit">Cadastrar</button>
         </form>
     </div>
