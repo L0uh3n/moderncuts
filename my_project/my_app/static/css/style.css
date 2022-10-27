@@ -114,6 +114,21 @@ p {
   padding-bottom: 50px;
 }
 
+#quem_somos a {
+  display: inline-flex;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 23.5px 25px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#quem_somos a:hover {
+  transition: ease-in-out 0.5s;
+  background-color: #ddd;
+  color: black;
+}
+
 #quem_somos h1 {
   padding-top: 150px;
   color: white;
@@ -163,6 +178,21 @@ p {
   padding-top: 150px;
   color: white;
   font-size: 50px;
+}
+
+#agendar a {
+  display: inline-flex;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 23.5px 25px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#agendar a:hover {
+  transition: ease-in-out 0.5s;
+  background-color: #ddd;
+  color: black;
 }
 
 #myBtn {

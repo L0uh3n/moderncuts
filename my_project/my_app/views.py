@@ -1,10 +1,9 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from my_app.forms import ClientForm, LoginForm
-from my_app.models import usuario
+from my_app.forms import ClientForm, LoginForm, ComentForm
+from my_app.models import usuario, comentario
 # Create your views here.
 
-def home(request):
+def home (request):
 	profile = {}
 	try:
 		profile['perfil'] = usuario.objects.get(id=request.session['uid'])
@@ -36,7 +35,7 @@ def register_sucess (request):
 def register_error (request):
 	return render(request, 'register_error.html')
 
-def docad(request):
+def docad (request):
 	data = {}
 	users = usuario.objects.all()
 	form = ClientForm(request.POST or None)
@@ -49,7 +48,7 @@ def docad(request):
 		form.save()
 	return render(request, 'register_sucess.html', data)
 
-def dolog(request):
+def dolog (request):
 	if request.method == 'POST':
 		try:
 			user = usuario.objects.get(usuario=request.POST['usuario']) # select * from usuario where usuario.id = usuario da sessão
@@ -64,7 +63,7 @@ def dolog(request):
 	else:
 		redirect('register')
 
-def doout(request):
+def doout (request):
 	if request.session['uid'] != "" or request.session['uid'] != None:
 		try:
 			del request.session['uid'] # finaliza a sessão
@@ -73,7 +72,7 @@ def doout(request):
 			pass
 	return redirect('home')
 
-def profile(request):
+def profile (request):
 	profile = {}
 	try:
 		profile['perfil'] = ClientForm(instance=usuario.objects.get(id=request.session['uid']))
@@ -81,7 +80,7 @@ def profile(request):
 	except:
 		return redirect('login')
  
-def doupdate(request):
+def doupdate (request):
 	form = usuario.objects.get(id=request.session['uid'])
 	form.nome = request.POST['nome']
 	form.sobrenome = request.POST['sobrenome']
@@ -91,3 +90,16 @@ def doupdate(request):
 	form.num_telefone = request.POST['num_telefone']
 	form.save()
 	return redirect('home')
+
+def coment (request):
+	data = {}
+	if request.method == 'POST':
+		c = comentario(usuario=usuario.objects.get(id=request.session['uid']), comentario=request.POST['comentario'])
+		c.save()
+		return redirect('home')
+	else:
+		data['form'] = ComentForm()
+	return render(request, 'coment.html', data)
+
+def agendamento (request):
+	return render(request, 'agendamento.html')

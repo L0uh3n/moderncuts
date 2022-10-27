@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from my_app.models import usuario
+from my_app.models import usuario, comentario
 
 # Create the form class.
 class ClientForm(ModelForm):
@@ -18,3 +18,8 @@ class LoginForm(ModelForm):
         model = usuario
         widgets = {'password': forms.PasswordInput(),}
         fields = ['usuario', 'senha']
+
+class ComentForm(ModelForm):
+    class Meta:
+        model = comentario
+        fields = ['comentario']

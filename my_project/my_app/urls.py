@@ -14,4 +14,6 @@ urlpatterns = [
     path('doout/', views.doout, name='doout'),
     path('profile/', views.profile, name='profile'),
     path('doupdate/', views.doupdate, name='doupdate'),
+    path('coment/', views.coment, name='coment'),
+    path('agendamento/', views.agendamento, name='agendamento'),
 ]
