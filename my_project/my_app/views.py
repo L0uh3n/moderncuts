@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from my_app.forms import ClientForm, LoginForm, ComentForm
-from my_app.models import usuario, comentario
+from my_app.models import usuario, comentario, agendamento
 # Create your views here.
 
 def home (request):
@@ -96,10 +96,43 @@ def coment (request):
 	if request.method == 'POST':
 		c = comentario(usuario=usuario.objects.get(id=request.session['uid']), comentario=request.POST['comentario'])
 		c.save()
-		return redirect('home')
+		return redirect('coment')
 	else:
 		data['form'] = ComentForm()
-	return render(request, 'coment.html', data)
+		data['history'] = comentario.objects.filter(usuario = request.session['uid'])
+		return render(request, 'coment.html', data)
 
-def agendamento (request):
-	return render(request, 'agendamento.html')
+def edit_coment (request, id):
+	c = comentario.objects.get(id=id)
+	if request.method == 'POST':
+		f = ComentForm(request.POST, instance=c)
+		f.save()
+		return redirect('coment')
+	else:
+		f = ComentForm(instance=c)
+		return render(request, 'coment.html', {'form':f})
+
+def agend (request):
+	return
+
+# def agend (request):
+#     data = {}
+#     if request.method == 'POST':
+#         c = agendamento(usuario=usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['sobrenome'], num_telefone = request.POST['num_telefone'], data = request.POST['data'], hora = request.POST['hora'], observacoes = request.POST['observacoes'])
+#         c.save()
+#         return redirect('agend')
+#     else:
+#         data['agendform'] = AgendForm()
+#         data['history'] = agendamento.objects.filter(usuario=request.session['uid'])
+#         print(data['history'])
+#         return render(request,'agend.html',data)
+
+# def edit_coment(request, id):
+#     c = agendamento.objects.get(id=id)
+#     if request.method == 'POST':
+#         f = AgendamentoForm(request.POST, instance=c)
+#         print(f)
+#         #f.save()
+#     else:
+#         f = AgendamentoForm(instance=c)
+#         return render(request, 'agend.html',{'agendform':f})

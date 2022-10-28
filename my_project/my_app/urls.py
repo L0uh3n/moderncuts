@@ -15,5 +15,6 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('doupdate/', views.doupdate, name='doupdate'),
     path('coment/', views.coment, name='coment'),
-    path('agendamento/', views.agendamento, name='agendamento'),
+    path('coment/<int:id>/editar/', views.edit_coment, name='edit_coment'),
+    path('agend/', views.agend, name='agend'),
 ]

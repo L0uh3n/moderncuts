@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class usuario(models.Model):
+class usuario(models.Model):  
     nome = models.CharField(max_length=50)
     sobrenome = models.CharField(max_length=100)
     data_nasc = models.DateField()
@@ -22,7 +22,8 @@ class servicos(models.Model):
 class agendamento(models.Model):
     servico = models.ForeignKey(servicos, on_delete = models.CASCADE)
     usuario = models.ForeignKey(usuario, on_delete = models.CASCADE)
-    data_horario = models.DateTimeField()
+    data = models.DateField()
+    hora = models.TimeField()
     observacoes = models.TextField(max_length=254, null=True)
 
 class servicos_agendamento(models.Model):

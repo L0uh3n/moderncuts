@@ -11,11 +11,21 @@
 <body>
     <div class="register_area">
         <h1>COMENTAR</h1>
-        <form class="register_form" method="post" action="/coment/">
+        <form class="register_form" method="post">
             {% csrf_token %}
             {{form.comentario}}
-            <input type="submit" value="Comentar">
+            <br>
+            <input id="commit" type="submit" value="Comentar">
         </form>
+        <div>
+            <br>
+            Comentários:<br>
+            {% if history %}
+                {% for c in history %}
+                    <br> > {{c.comentario}} | {{c.usuario.nome}} | <a href="{% url 'edit_coment' c.id %}">Edit</a> <br>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
 </body>
 <script src="{% static 'scripts/coment.js' %}"></script>
