@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+    <title>Comentar</title>
+</head>
+<body>
+    <div class="register_area">
+        <h1>COMENTAR</h1>
+        <form class="register_form" method="post">
+            {% csrf_token %}
+            {{form.comentario}}
+            <br>
+            <input id="commit" type="submit" value="Comentar">
+        </form>
+        <div>
+            <br>
+            Comentários:<br>
+            {% if history %}
+                {% for c in history %}
+                    <br> > {{c.comentario}} | {{c.usuario.nome}} | <a href="{% url 'edit_coment' c.id %}">Edit</a> <br>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+<script src="{% static 'scripts/coment.js' %}"></script>
+</html>

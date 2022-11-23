@@ -1,0 +1,527 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*===== VARIABLES CSS =====*/
+/* line 5, my_app/static/css/home.css */
+:root {
+  --header-height: 3rem;
+  /*========== Colors ==========*/
+  --first-color: #ce2613;
+  --first-color-alt: #f2321a;
+  --title-color: #393939;
+  --text-color: #707070;
+  --text-color-light: #A6A6A6;
+  --body-color: #FBFEFD;
+  --container-color: #FFFFFF;
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  /*========== Margenes ==========*/
+  --mb-1: .5rem;
+  --mb-2: 2.5rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100; }
+
+@media screen and (min-width: 768px) {
+  /* line 45, my_app/static/css/home.css */
+  :root {
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem; } }
+
+/*========== BASE ==========*/
+/* line 57, my_app/static/css/home.css */
+*, ::before, ::after {
+  box-sizing: border-box; }
+
+/* line 61, my_app/static/css/home.css */
+html {
+  scroll-behavior: smooth; }
+
+/*========== Variables Dark theme ==========*/
+/* line 66, my_app/static/css/home.css */
+body.dark-theme {
+  --title-color: #F1F3F2;
+  --text-color: #C7D1CC;
+  --body-color: #161616;
+  --container-color: #27302C; }
+
+/*========== Button Dark/Light ==========*/
+/* line 74, my_app/static/css/home.css */
+.change-theme {
+  position: absolute;
+  right: 1rem;
+  top: 1.8rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer; }
+
+/* line 83, my_app/static/css/home.css */
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  line-height: 1.6; }
+
+/* line 92, my_app/static/css/home.css */
+h1, h2, h3, p, ul {
+  margin: 0; }
+
+/* line 96, my_app/static/css/home.css */
+ul {
+  padding: 0;
+  list-style: none; }
+
+/* line 101, my_app/static/css/home.css */
+a {
+  text-decoration: none;
+  cursor: pointer; }
+
+/* line 106, my_app/static/css/home.css */
+img {
+  max-width: 100%;
+  height: auto; }
+
+/*========== CLASS CSS ==========*/
+/* line 112, my_app/static/css/home.css */
+.section {
+  padding: 4rem 0 2rem; }
+
+/* line 116, my_app/static/css/home.css */
+.section-title, .section-subtitle {
+  text-align: center; }
+
+/* line 120, my_app/static/css/home.css */
+.section-title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  margin-bottom: var(--mb-3); }
+
+/* line 126, my_app/static/css/home.css */
+.section-subtitle {
+  display: block;
+  color: var(--first-color);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--mb-1); }
+
+/*========== LAYOUT ==========*/
+/* line 134, my_app/static/css/home.css */
+.bd-container {
+  max-width: 960px;
+  width: calc(100% - 2rem);
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2); }
+
+/* line 141, my_app/static/css/home.css */
+.bd-grid {
+  display: grid;
+  gap: 1.5rem; }
+
+/* line 146, my_app/static/css/home.css */
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color); }
+
+/*========== NAV ==========*/
+/* line 156, my_app/static/css/home.css */
+.nav {
+  max-width: 1024px;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+@media screen and (max-width: 768px) {
+  /* line 165, my_app/static/css/home.css */
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    background-color: var(--body-color);
+    transition: .4s;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 1rem 1rem;
+    z-index: var(--z-fixed); } }
+
+/* line 180, my_app/static/css/home.css */
+.nav__item {
+  margin-bottom: var(--mb-2); }
+
+/* line 184, my_app/static/css/home.css */
+.nav__link, .nav__logo, .nav__toggle {
+  color: var(--text-color);
+  font-weight: var(--font-medium); }
+
+/* line 189, my_app/static/css/home.css */
+.nav__logo:hover {
+  color: var(--first-color); }
+
+/* line 193, my_app/static/css/home.css */
+.nav__link {
+  transition: .3s; }
+
+/* line 197, my_app/static/css/home.css */
+.nav__link:hover {
+  color: var(--first-color); }
+
+/* line 201, my_app/static/css/home.css */
+.nav__toggle {
+  font-size: 1.3rem;
+  cursor: pointer; }
+
+/* Show menu */
+/* line 207, my_app/static/css/home.css */
+.show-menu {
+  top: var(--header-height); }
+
+/* Active menu */
+/* line 212, my_app/static/css/home.css */
+.active-link {
+  color: var(--first-color); }
+
+/* Change background header */
+/* line 217, my_app/static/css/home.css */
+.scroll-header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+
+/* Scroll top */
+/* line 222, my_app/static/css/home.css */
+.scrolltop {
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .3rem;
+  background: rgba(255, 13, 0, 0.5);
+  border-radius: .4rem;
+  z-index: var(--z-tooltip);
+  transition: .4s;
+  visibility: hidden; }
+
+/* line 237, my_app/static/css/home.css */
+.scrolltop:hover {
+  background-color: var(--first-color-alt); }
+
+/* line 241, my_app/static/css/home.css */
+.scrolltop__icon {
+  font-size: 1.8rem;
+  color: var(--body-color); }
+
+/* Show scrolltop */
+/* line 247, my_app/static/css/home.css */
+.show-scroll {
+  visibility: visible;
+  bottom: 1.5rem; }
+
+/*========== HOME ==========*/
+/* line 253, my_app/static/css/home.css */
+.home__container {
+  height: calc(100vh - var(--header-height));
+  align-content: center; }
+
+/* line 258, my_app/static/css/home.css */
+.home__title {
+  font-size: var(--biggest-font-size);
+  color: var(--first-color);
+  margin-bottom: var(--mb-1); }
+
+/* line 264, my_app/static/css/home.css */
+.home__subtitle {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  margin-bottom: var(--mb-4); }
+
+/* line 270, my_app/static/css/home.css */
+.home__img {
+  width: 300px;
+  justify-self: center; }
+
+/*========== BUTTONS ==========*/
+/* line 276, my_app/static/css/home.css */
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #FFF;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  transition: .3s;
+  cursor: pointer; }
+
+/* line 286, my_app/static/css/home.css */
+.button:hover {
+  background-color: var(--first-color-alt); }
+
+/* line 290, my_app/static/css/home.css */
+.nav__button {
+  display: inline-block;
+  background-color: #393939;
+  color: #FFF;
+  padding: .1rem  1rem;
+  border-radius: .5rem;
+  transition: .3s;
+  cursor: pointer; }
+
+/* line 300, my_app/static/css/home.css */
+.nav__button:hover {
+  background-color: var(--first-color-alt); }
+
+/*========== ABOUT ==========*/
+/* line 305, my_app/static/css/home.css */
+.about__data {
+  text-align: center; }
+
+/* line 309, my_app/static/css/home.css */
+.about__description {
+  margin-bottom: var(--mb-3); }
+
+/* line 313, my_app/static/css/home.css */
+.about__img {
+  width: 280px;
+  border-radius: .5rem;
+  justify-self: center; }
+
+/*========== SERVICES ==========*/
+/* line 320, my_app/static/css/home.css */
+.services__container {
+  row-gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* line 325, my_app/static/css/home.css */
+.services__content {
+  text-align: center; }
+
+/* line 329, my_app/static/css/home.css */
+.services__img {
+  width: 64px;
+  height: 64px;
+  fill: var(--first-color);
+  margin-bottom: var(--mb-2); }
+
+/* line 336, my_app/static/css/home.css */
+.services__title {
+  font-size: var(--h3-font-size);
+  color: var(--title-color);
+  margin-bottom: var(--mb-1); }
+
+/* line 342, my_app/static/css/home.css */
+.services__description {
+  padding: 0 1.5rem; }
+
+/*========== GALLERY ==========*/
+/* line 347, my_app/static/css/home.css */
+.menu__container {
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center; }
+
+/* line 352, my_app/static/css/home.css */
+.menu__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-color);
+  border-radius: .5rem;
+  box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
+  padding: 5px; }
+
+/* line 362, my_app/static/css/home.css */
+.menu__img {
+  width: 100px;
+  align-self: center;
+  margin-bottom: var(--mb-1);
+  border-radius: .5rem; }
+
+/* line 369, my_app/static/css/home.css */
+.menu__name {
+  font-weight: var(--font-semi-bold);
+  font-size: var(--normal-font-size);
+  padding-left: 5px; }
+
+/* line 375, my_app/static/css/home.css */
+.menu__detail {
+  font-size: var(--small-font-size);
+  margin-bottom: var(--mb-1);
+  padding-left: 5px; }
+
+/* line 381, my_app/static/css/home.css */
+.menu__button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  padding: .625rem .813rem;
+  border-radius: .5rem 0 .5rem 0; }
+
+/*========== CONTACT ==========*/
+/* line 391, my_app/static/css/home.css */
+.contact__container {
+  text-align: center; }
+
+/* line 395, my_app/static/css/home.css */
+.contact__description {
+  margin-bottom: var(--mb-3); }
+
+/*========== FOOTER ==========*/
+/* line 400, my_app/static/css/home.css */
+.footer__container {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  row-gap: 2rem; }
+
+/* line 405, my_app/static/css/home.css */
+.footer__logo {
+  font-size: var(--h3-font-size);
+  color: var(--first-color);
+  font-weight: var(--font-semi-bold); }
+
+/* line 411, my_app/static/css/home.css */
+.footer__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin: 0.25rem 0 var(--mb-3); }
+
+/* line 417, my_app/static/css/home.css */
+.footer__social {
+  font-size: 1.5rem;
+  color: var(--title-color);
+  margin-right: var(--mb-2); }
+
+/* line 423, my_app/static/css/home.css */
+.footer__title {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  margin-bottom: var(--mb-2); }
+
+/* line 429, my_app/static/css/home.css */
+.footer__link {
+  display: inline-block;
+  color: var(--text-color);
+  margin-bottom: var(--mb-1); }
+
+/* line 435, my_app/static/css/home.css */
+.footer__link:hover {
+  color: var(--first-color); }
+
+/* line 439, my_app/static/css/home.css */
+.footer__copy {
+  text-align: center;
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+  margin-top: 3.5rem; }
+
+/*========== MEDIA QUERIES ==========*/
+@media screen and (min-width: 576px) {
+  /* line 448, my_app/static/css/home.css */
+  .home__container,
+  .about__container,
+  .app__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center; }
+  /* line 455, my_app/static/css/home.css */
+  .about__data, .about__initial,
+  .app__data, .app__initial,
+  .contact__container, .contact__initial {
+    text-align: initial; }
+  /* line 461, my_app/static/css/home.css */
+  .about__img, .app__img {
+    width: 380px;
+    order: -1; }
+  /* line 466, my_app/static/css/home.css */
+  .contact__container {
+    grid-template-columns: 1.75fr 1fr;
+    align-items: center; }
+  /* line 470, my_app/static/css/home.css */
+  .contact__button {
+    justify-self: center; } }
+
+@media screen and (min-width: 768px) {
+  /* line 476, my_app/static/css/home.css */
+  body {
+    margin: 0; }
+  /* line 480, my_app/static/css/home.css */
+  .section {
+    padding-top: 8rem; }
+  /* line 484, my_app/static/css/home.css */
+  .nav {
+    height: calc(var(--header-height) + 1.5rem); }
+  /* line 487, my_app/static/css/home.css */
+  .nav__list {
+    display: flex; }
+  /* line 491, my_app/static/css/home.css */
+  .nav__item {
+    margin-left: var(--mb-5);
+    margin-bottom: 0; }
+  /* line 496, my_app/static/css/home.css */
+  .nav__item {
+    margin-left: var(--mb-5);
+    margin-bottom: 0; }
+  /* line 501, my_app/static/css/home.css */
+  .nav__toggle {
+    display: none; }
+  /* line 505, my_app/static/css/home.css */
+  .change-theme {
+    position: initial;
+    margin-left: var(--mb-2); }
+  /* line 510, my_app/static/css/home.css */
+  .home__container {
+    height: 100vh;
+    justify-items: center; }
+  /* line 515, my_app/static/css/home.css */
+  .services__container,
+  .menu__container {
+    margin-top: var(--mb-6); }
+  /* line 520, my_app/static/css/home.css */
+  .menu__container {
+    grid-template-columns: repeat(3, 210px);
+    column-gap: 4rem; }
+  /* line 525, my_app/static/css/home.css */
+  .menu__img {
+    width: 200px; }
+  /* line 529, my_app/static/css/home.css */
+  .app__store {
+    margin: 0 var(--mb-1) 0 0; } }
+
+@media screen and (min-width: 960px) {
+  /* line 535, my_app/static/css/home.css */
+  .bd-container {
+    margin-left: auto;
+    margin-right: auto; }
+  /* line 540, my_app/static/css/home.css */
+  .home__img {
+    width: 500px; }
+  /* line 544, my_app/static/css/home.css */
+  .about__container,
+  .app__container {
+    column-gap: 7rem; } }
+
+/* For tall screens on mobiles y desktop*/
+@media screen and (min-height: 721px) {
+  /* line 552, my_app/static/css/home.css */
+  .home__container {
+    height: 640px; } }

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+    <title>Cadastrar</title>
+</head>
+<body>
+    <div class="register_area">
+        <h1>CADASTRO</h1>
+        <form class="register_form" method="post" action="/docad/">
+            {% csrf_token %}
+            <div class="nothing">Nome: {{form.nome}}</div><br>
+            <div class="nothing">Sobrenome: {{form.sobrenome}}</div><br>
+            <div class="nothing">Data de nascimento: {{form.data_nasc}}</div><br>
+            <div class="nothing">Nome de usuario: {{form.usuario}}</div><br>
+            <div class="nothing">Senha: {{form.senha}}</div><br>
+            <div class="nothing">Email: {{form.email}}</div><br>
+            <div class="nothing">Número de telefone: {{form.num_telefone}}</div><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+<script src="{% static 'scripts/register.js' %}"></script>
+</html>

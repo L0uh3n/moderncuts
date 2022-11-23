@@ -1,0 +1,1 @@
+setTimeout(function () { window.location = '/register'; }, 3000);
