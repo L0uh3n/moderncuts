@@ -13,8 +13,8 @@ class ClientForm(ModelForm):
         fields = ['nome', 'sobrenome', 'data_nasc', 'usuario', 'email', 'senha', 'num_telefone']
 
 class LoginForm(ModelForm):
-    usuario = forms.CharField(widget=forms.CharField(attrs={'placeholder' : 'Digite seu nome de usuário', 'required' : 'True'}))
-    senha = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Digite sua senha', 'required' : 'True'}))
+    usuario = forms.CharField(widget=forms.CharField)
+    senha = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'password', 'placeholder' : 'Digite sua senha'}))
     class Meta:
         model = usuario
         widgets = {'password': forms.PasswordInput(),}
