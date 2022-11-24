@@ -12,8 +12,11 @@
 
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="{% static 'css/log_reg.css' %}">
+
+    <!--========== FAV ICON ==========-->
+    <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.ico' %}">
          
-    <!--<title>Login & Registration Form</title>-->
+    <title>Login</title>
 </head>
 <body>
     
@@ -25,7 +28,7 @@
                 <form method="post" action="/dolog/">
                     {% csrf_token %}
                     <div class="input-field">
-                        {{login.usuario}
+                        {{login.usuario}}
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
@@ -44,7 +47,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="button" value="Login">
+                        <input type="submit" value="Login">
                     </div>
                 </form>
 
@@ -59,38 +62,39 @@
             <div class="form signup">
                 <span class="title">Cadastro</span>
 
-                <form action="#">
+                <form method="post" action="/docad/">
+                    {% csrf_token %}
                     <div class="input-field">
-                        <input type="text" placeholder="Digite seu nome" required>
+                        {{register.nome}}
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Digite seu sobrenome" required>
+                        {{register.sobrenome}}
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="date" placeholder="Data de nascimento" required>
+                        {{register.data_nasc}}
                         <i class="uil uil-calendar-alt"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Digite seu nome de usuário" required>
+                        {{register.usuario}}
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Digite seu e-mail" required>
+                        {{register.email}}
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Crie uma senha" required>
+                        {{register.senha}}
                         <i class="uil uil-lock icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Confirme a senha" required>
+                        <input type="password" id="confirm_pass" class="password" placeholder="Confirme a senha" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
                     <div class="input-field">
-                        <input id="phone-number" onkeypress="regex_telefone(event)" maxlength="15" type="text" placeholder="Digite seu número de telefone" required>
+                        {{register.num_telefone}}
                         <i class="uil uil-phone"></i>
                     </div>
                     
@@ -102,7 +106,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="button" value="Cadastrar">
+                        <input type="submit" value="Cadastrar">
                     </div>
                 </form>
 

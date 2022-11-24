@@ -4,20 +4,24 @@ from my_app.models import usuario, comentario, agendamento
 
 # Create the form class.
 class ClientForm(ModelForm):
-    data_nasc = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    senha = forms.CharField(widget=forms.PasswordInput)
-    num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '(DDD) 9123-4567', 'onkeypress': 'regex_telefone(event)', 'maxlength': '15'}))
+    nome = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome', 'required' : 'True'}))
+    sobrenome = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu sobrenome', 'required' : 'True'}))
+    data_nasc = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'required' : 'True'}))
+    usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome de usuário', 'required' : 'True'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' : 'Digite seu e-mail', 'required' : 'True'}))
+    senha = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Crie sua senha', 'required' : 'True'}))
+    num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Digite seu número de telefone', 'onkeypress': 'regex_telefone(event)', 'maxlength': '15', 'required' : 'True'}))
     class Meta:
         model = usuario
-        widgets = {'password': forms.PasswordInput(),}
+        widgets = {'email': forms.EmailInput(), 'user': forms.TextInput(), 'password': forms.PasswordInput(),}
         fields = ['nome', 'sobrenome', 'data_nasc', 'usuario', 'email', 'senha', 'num_telefone']
 
 class LoginForm(ModelForm):
-    usuario = forms.CharField(widget=forms.CharField)
-    senha = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'password', 'placeholder' : 'Digite sua senha'}))
+    usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome de usuário', 'required' : 'True'}))
+    senha = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'password', 'placeholder' : 'Digite sua senha', 'required' : 'True'}))
     class Meta:
         model = usuario
-        widgets = {'password': forms.PasswordInput(),}
+        widgets = {'user': forms.TextInput(), 'password': forms.PasswordInput(),}
         fields = ['usuario', 'senha']
 
 class ComentForm(ModelForm):

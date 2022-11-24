@@ -57,7 +57,7 @@ def dolog (request):
 		else:
 			return redirect('login_error')
 	else:
-		redirect('register')
+		redirect('log_reg')
 
 def doout (request):
 	if request.session['uid'] != "" or request.session['uid'] != None:
