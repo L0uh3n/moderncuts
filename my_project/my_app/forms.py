@@ -10,11 +10,12 @@ class ClientForm(ModelForm):
     usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome de usuário', 'required' : 'True'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' : 'Digite seu e-mail', 'required' : 'True'}))
     senha = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Crie sua senha', 'required' : 'True'}))
+    confirma_senha = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Crie sua senha', 'required' : 'True'}))
     num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Digite seu número de telefone', 'onkeypress': 'regex_telefone(event)', 'maxlength': '15', 'required' : 'True'}))
     class Meta:
         model = usuario
         widgets = {'email': forms.EmailInput(), 'user': forms.TextInput(), 'password': forms.PasswordInput(),}
-        fields = ['nome', 'sobrenome', 'data_nasc', 'usuario', 'email', 'senha', 'num_telefone']
+        fields = ['nome', 'sobrenome', 'data_nasc', 'usuario', 'email', 'senha', 'confirma_senha', 'num_telefone']
 
 class LoginForm(ModelForm):
     usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome de usuário', 'required' : 'True'}))

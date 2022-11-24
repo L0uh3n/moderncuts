@@ -89,9 +89,12 @@
                         <i class="uil uil-lock icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" id="confirm_pass" class="password" placeholder="Confirme a senha" required>
+                        {{register.confirma_senha}}
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div id="result">
+    
                     </div>
                     <div class="input-field">
                         {{register.num_telefone}}
@@ -106,7 +109,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="submit" value="Cadastrar">
+                        <input type="submit" id="btn" value="Cadastrar">
                     </div>
                 </form>
 
@@ -119,6 +122,6 @@
         </div>
     </div>
 
-    <script src="{% static 'scripts/log_reg.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/log_reg.js' %}"></script>
 </body>
 </html>

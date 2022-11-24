@@ -61,19 +61,38 @@ function regex_telefone(evento) {
 }
 
 // confirmar senha
-var password = document.getElementById("id_senha"),
-    confirm_password = document.getElementById("confirm_pass");
+let input1 = document.getElementById("id_confirma_senha");
+input1.setAttribute("onkeyup", "confereSenha()");
 
-function validatePassword() {
-    if (password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Senhas diferentes!");
-        confirm_password.reportValidity();
-        return false;
+let input2 = document.getElementById("id_senha");
+input2.setAttribute("onkeyup", "confereSenha()");
+
+
+function confereSenha() {
+    let senha1 = document.getElementById("id_senha");
+    let senha2 = document.getElementById("id_confirma_senha");
+    let btn = document.getElementById("btn");
+
+    let result = document.getElementById("result");
+
+    if (senha1.value != senha2.value || senha2.value != senha1.value) {
+        result.innerText = "As senhas não conferem"
+        btn.disabled = true
     } else {
-        confirm_password.setCustomValidity("");
-        return true;
+        result.innerText = ""
+        btn.disabled = false
     }
-}
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
+    if (senha2.value == "") {
+        result.innerText = ""
+    }
+
+    if (senha1.value == "" || senha2.value == "") {
+        btn.disabled = true
+    }
+
+    if (!texto.test(usuario.value) || "") {
+        result.innerText = "Usuario deve conter letras"
+        btn.disabled = true
+    }
+};

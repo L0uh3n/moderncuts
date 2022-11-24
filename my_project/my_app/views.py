@@ -44,6 +44,7 @@ def docad (request):
 		form.save()
 	return render(request, 'register_sucess.html', data)
 
+
 def dolog (request):
 	if request.method == 'POST':
 		try:
