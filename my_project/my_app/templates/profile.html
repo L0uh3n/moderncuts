@@ -1,27 +1,64 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="pt-br" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
-    <title>Perfil</title>
+  <meta charset="UTF-8">
+  <!---<title> Responsive Registration Form | CodingLab </title>--->
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.ico' %}">
+
+  <title>Perfil</title>
 </head>
+
 <body>
-    <div class="register_area">
-        <h1>PERFIL</h1>
-        <form class="register_form" method="post" action="/doupdate/">
-            {% csrf_token %}
-            <div class="nothing">Nome: {{perfil.nome}}</div><br>
-            <div class="nothing">Sobrenome: {{perfil.sobrenome}}</div><br>
-            <div class="nothing">Nome de usuario: {{perfil.usuario}}</div><br>
-            <div class="nothing">Senha: {{perfil.senha}}</div><br>
-            <div class="nothing">Email: {{perfil.email}}</div><br>
-            <div class="nothing">Número de telefone: {{perfil.num_telefone}}</div><br>
-            <button type="submit">Salvar</button>
-        </form>
+  <div class="container">
+    <div class="title">Atualizar perfil</div>
+    <div class="content">
+      <form method="post" action="/doupdate/">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nome</span>
+            {{perfil.nome}}
+          </div>
+          <div class="input-box">
+            <span class="details">Sobrenome</span>
+            {{perfil.sobrenome}}
+          </div>
+          <div class="input-box">
+            <span class="details">Nome de usuário</span>
+            {{perfil.usuario}}
+          </div>
+          <div class="input-box">
+            <span class="details">E-mail</span>
+            {{perfil.email}}
+          </div>
+          <div class="input-box">
+            <span class="details">Senha</span>
+            {{perfil.senha}}
+          </div>
+          <div class="input-box">
+            <span class="details">Confrimar senha</span>
+            {{perfil.confirma_senha}}
+          </div>
+          <div class="input-box">
+            <span class="details">Número de telefone</span>
+            {{perfil.num_telefone}}
+          </div>
+        </div>
+
+        <div class="button">
+          <input id="cad-button" type="submit" value="Atualizar">
+        </div>
+      </form>
     </div>
+  </div>
+
 </body>
-<script src="{% static 'scripts/register.js' %}"></script>
+<script type="text/javascript" src="{% static 'scripts/register.js' %}"></script>
+
 </html>

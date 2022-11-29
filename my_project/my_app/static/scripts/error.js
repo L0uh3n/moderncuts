@@ -1,1 +1,1 @@
-setTimeout(function () { window.location = '/log_reg'; }, 3000);
+setTimeout(function () { window.location = '/register'; }, 3000);

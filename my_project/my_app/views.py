@@ -13,17 +13,21 @@ def home (request):
 		profile['custom'] = 'Entrar'
 		return render(request, 'home.html', profile)
 
-def log_reg (request):
+def login (request):
 	data = {}
 	data['login'] = LoginForm()
-	data['register'] = ClientForm()
-	return render(request, 'log_reg.html', data)
+	return render(request, 'login.html', data)
 
 def login_error (request):
 	return render(request, 'login_error.html')
 
 def logout (request):
 	return render(request, 'logout.html')
+
+def register (request):
+	data = {}
+	data['register'] = ClientForm()
+	return render(request, 'register.html', data)
 
 def register_sucess (request):
 	return render(request, 'register_sucess.html')
@@ -58,7 +62,7 @@ def dolog (request):
 		else:
 			return redirect('login_error')
 	else:
-		redirect('log_reg')
+		redirect('login')
 
 def doout (request):
 	if request.session['uid'] != "" or request.session['uid'] != None:
@@ -75,7 +79,7 @@ def profile (request):
 		profile['perfil'] = ClientForm(instance=usuario.objects.get(id=request.session['uid']))
 		return render (request, 'profile.html', profile)
 	except:
-		return redirect('login')
+		return redirect('home')
  
 def doupdate (request):
 	form = usuario.objects.get(id=request.session['uid'])
@@ -86,7 +90,10 @@ def doupdate (request):
 	form.email = request.POST['email']
 	form.num_telefone = request.POST['num_telefone']
 	form.save()
-	return redirect('home')
+	return redirect('update_sucess')
+
+def update_sucess (request):
+	return render(request, 'update_sucess.html')
 
 def coment (request):
 	data = {}

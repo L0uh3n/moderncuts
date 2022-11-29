@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FONTAWESOME ===============-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <!--========== BOX ICONS ==========-->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
@@ -48,7 +48,9 @@
                     <li class="nav__item"><a href="#gallery" class="nav__link">Galeria</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contatos</a></li>
                     <li class="nav__item"><a href="" class="nav__link">Agendar</a></li>
-                    <li class="nav__item"><a href="{% url 'log_reg' %}" class="nav__button">Login</a></li>
+                    {% if custom == "Entrar" %}
+                        <li class="nav__item"><a href="{% url 'login' %}" class="nav__button">Login</a></li>
+                    {% endif %}
 
                     <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
                 </ul>
@@ -57,6 +59,18 @@
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-menu'></i>
             </div>
+
+            {% if custom == "Sair" %}
+                <div class="dropdown">
+                    <a class="profile-btn"><img src="{% static 'imgs/profile.png' %}" class="profile-img"></a>
+                    <div class="dropdown-content">
+                        <a id="username" href="#"><i class='bx bx-user'></i> {{perfil.nome}}</a>
+                        <a class="perfil-edit" href="{% url 'profile' %}"><i class='bx bx-edit-alt'></i> Atualizar perfil</a>
+                        <a class="perfil-edit" href="{% url 'doout' %}"><i class='bx bx-log-out-circle' ></i></i> Sair</a>
+                    </div>
+                </div>
+            {% endif %}
+            
         </nav>
     </header>
 
@@ -74,9 +88,6 @@
                 <img src="{% static 'imgs/cut4.png' %}" alt="" class="home__img">
             </div>
         </section>
-
-        <!--========== LOGIN MODAL ==========-->
-
 
         <!--========== ABOUT ==========-->
         <section class="about section bd-container" id="about">
@@ -100,22 +111,44 @@
 
             <div class="services__container  bd-grid">
                 <div class="services__content">
-                    <svg class="services__img" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 500.34"><path d="M127.97 264.15c-36.3-13.14-56.52-33.77-61.8-61.34l229.16 61.62c8.95 1.14 16.69 4.08 22.77 9.53 5.68 5.1 6.1 8.62 9.92 14.17 3.2 4.66 7.62 8.25 14.39 9.77l7.3.34c6.56.32 13.36 1.73 17.99-4.24 3.09-4 3.06-9.97.83-17.33-.33-6.97.71-13.66 3.17-20.07 2.39-6.19 6.12-12.12 11.25-17.76 17.76-16.02 40.25-22.73 70.21-14.69 34.95 8.35 51.72 28.16 58.24 54.42 2.37 17.56-2.41 31.15-12.84 41.61-15.91 15.93-36.48 21.23-58.4 19.34-13.88-1.19-28.21-4.97-43.87-9.51l-55.79-6.81 1.36-2.44-213.89-56.61zm10.16 118.39c2.25 2.25 2.21 5.94-.09 8.23-2.29 2.3-5.98 2.33-8.22.09l-71.04-71.04-9.95 9.95 72.29 72.29c2.47 4.05-2.22 7.75-5.25 7-46.1-18.26-99.36-56.53-112.94-99.91-5.24-16.73-3.85-15.42 7.41-26.69l43.75-43.75c3.87 6.24 8.53 12.11 14.02 17.6 11.46 11.45 26.39 20.95 44.92 28.43l61.45 61.45c2.26 2.26 2.22 5.95-.08 8.26-2.31 2.3-6.01 2.34-8.26.08L95.1 283.5l-9.82 9.82 71.03 71.04c2.26 2.25 2.22 5.95-.08 8.26-2.31 2.3-6 2.34-8.26.08l-71.04-71.03-9.84 9.84 71.04 71.03zm-33.11-194.76 94.42-94.42 18.18 67.62-5.15 5.15 8.94 8.94 6.14 22.83-23.42-23.42-9.83 9.82 37.59 37.59-22.83-6.14-23.11-23.1-9.82 9.82 6.05 6.06-77.16-20.75zM250.37 42.43l32.09-32.09c11.27-11.26 9.96-12.65 26.69-7.41 43.38 13.58 81.65 66.84 99.9 112.94.76 3.03-2.94 7.72-6.99 5.25l-72.29-72.29-8.3 8.3 71.04 71.03c2.25 2.25 2.21 5.94-.08 8.23-2.3 2.29-5.99 2.33-8.23.08l-71.04-71.03-9.86 9.86 71.04 71.03c2.24 2.25 2.21 5.94-.09 8.23-2.29 2.29-5.98 2.33-8.23.08l-71.03-71.03-4.56 4.56c-6.37-12.57-13.86-23.13-22.46-31.72-5.48-5.49-11.35-10.16-17.6-14.02zm48.13 64.37 57.68 57.68c2.26 2.26 2.22 5.96-.08 8.26-2.3 2.31-6 2.35-8.26.09l-43.03-43.03-5.22-19.75c-.27-1.03-.61-2.03-1-2.99l-.09-.26zm13.4 49.78 26.1 26.09c2.24 2.25 2.21 5.94-.09 8.23-2.29 2.29-5.98 2.33-8.23.08l-11.8-11.8-5.98-22.6zm-99.81 155.26c.79 2.08.33 4.55-1.37 6.25-2.29 2.3-5.98 2.33-8.23.09l-12.07-12.07 21.67 5.73zm-48.47-12.83 29.02 29.02c2.25 2.25 2.21 5.94-.09 8.23-2.29 2.29-5.98 2.33-8.23.08l-43.31-43.31 22.61 5.98zm112.2-182.71c-13.15-36.3-33.78-56.51-61.35-61.8l50.93 189.39 47.7 13.31-37.28-140.9zm30.63 206.8c1.38 2.16 2.44 4.67 3.11 7.64l.35 7.31c.31 6.55 1.72 13.35-4.25 17.98-4 3.1-9.97 3.06-17.33.83-6.96-.32-13.66.71-20.06 3.18-6.2 2.39-12.12 6.11-17.76 11.25-16.02 17.76-22.73 40.24-14.7 70.21 8.36 34.95 28.17 51.72 54.43 58.24 17.56 2.37 31.15-2.41 41.6-12.84 15.94-15.91 21.23-36.48 19.35-58.4-1.2-13.89-4.98-28.22-9.52-43.88l-6.6-54.16-2.13-.55-.52.29-.12-.45-25.85-6.65zm-15 57.19c-14.43-3.02-24.95 5.67-30.9 18.08-4.78 9.95-5.6 21.81-2.69 35.46 2.45 11.51 10.21 26.26 20.87 35.12 20.63 17.15 41.03 3.91 47.46-19.03 2.86-10.2 2.61-20.84-1.01-31.95-2.44-7.53-6.22-15.58-11.39-22.35-5.73-7.48-13.14-13.4-22.34-15.33zm1.02-100.46c4.42-4.42 11.58-4.42 16 0s4.42 11.59 0 16c-4.42 4.42-11.58 4.42-16 0-4.42-4.41-4.42-11.58 0-16zm99.49-.04c-3.02-14.43 5.67-24.96 18.07-30.91 9.95-4.77 21.81-5.6 35.46-2.69 11.51 2.46 26.26 10.21 35.12 20.87 17.16 20.63 3.91 41.03-19.03 47.46-10.19 2.86-20.83 2.61-31.95-1-7.52-2.45-15.57-6.23-22.34-11.4-7.49-5.72-13.41-13.14-15.33-22.33z"/></svg>
+                    <svg class="services__img" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                        text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                        clip-rule="evenodd" viewBox="0 0 512 500.34">
+                        <path
+                            d="M127.97 264.15c-36.3-13.14-56.52-33.77-61.8-61.34l229.16 61.62c8.95 1.14 16.69 4.08 22.77 9.53 5.68 5.1 6.1 8.62 9.92 14.17 3.2 4.66 7.62 8.25 14.39 9.77l7.3.34c6.56.32 13.36 1.73 17.99-4.24 3.09-4 3.06-9.97.83-17.33-.33-6.97.71-13.66 3.17-20.07 2.39-6.19 6.12-12.12 11.25-17.76 17.76-16.02 40.25-22.73 70.21-14.69 34.95 8.35 51.72 28.16 58.24 54.42 2.37 17.56-2.41 31.15-12.84 41.61-15.91 15.93-36.48 21.23-58.4 19.34-13.88-1.19-28.21-4.97-43.87-9.51l-55.79-6.81 1.36-2.44-213.89-56.61zm10.16 118.39c2.25 2.25 2.21 5.94-.09 8.23-2.29 2.3-5.98 2.33-8.22.09l-71.04-71.04-9.95 9.95 72.29 72.29c2.47 4.05-2.22 7.75-5.25 7-46.1-18.26-99.36-56.53-112.94-99.91-5.24-16.73-3.85-15.42 7.41-26.69l43.75-43.75c3.87 6.24 8.53 12.11 14.02 17.6 11.46 11.45 26.39 20.95 44.92 28.43l61.45 61.45c2.26 2.26 2.22 5.95-.08 8.26-2.31 2.3-6.01 2.34-8.26.08L95.1 283.5l-9.82 9.82 71.03 71.04c2.26 2.25 2.22 5.95-.08 8.26-2.31 2.3-6 2.34-8.26.08l-71.04-71.03-9.84 9.84 71.04 71.03zm-33.11-194.76 94.42-94.42 18.18 67.62-5.15 5.15 8.94 8.94 6.14 22.83-23.42-23.42-9.83 9.82 37.59 37.59-22.83-6.14-23.11-23.1-9.82 9.82 6.05 6.06-77.16-20.75zM250.37 42.43l32.09-32.09c11.27-11.26 9.96-12.65 26.69-7.41 43.38 13.58 81.65 66.84 99.9 112.94.76 3.03-2.94 7.72-6.99 5.25l-72.29-72.29-8.3 8.3 71.04 71.03c2.25 2.25 2.21 5.94-.08 8.23-2.3 2.29-5.99 2.33-8.23.08l-71.04-71.03-9.86 9.86 71.04 71.03c2.24 2.25 2.21 5.94-.09 8.23-2.29 2.29-5.98 2.33-8.23.08l-71.03-71.03-4.56 4.56c-6.37-12.57-13.86-23.13-22.46-31.72-5.48-5.49-11.35-10.16-17.6-14.02zm48.13 64.37 57.68 57.68c2.26 2.26 2.22 5.96-.08 8.26-2.3 2.31-6 2.35-8.26.09l-43.03-43.03-5.22-19.75c-.27-1.03-.61-2.03-1-2.99l-.09-.26zm13.4 49.78 26.1 26.09c2.24 2.25 2.21 5.94-.09 8.23-2.29 2.29-5.98 2.33-8.23.08l-11.8-11.8-5.98-22.6zm-99.81 155.26c.79 2.08.33 4.55-1.37 6.25-2.29 2.3-5.98 2.33-8.23.09l-12.07-12.07 21.67 5.73zm-48.47-12.83 29.02 29.02c2.25 2.25 2.21 5.94-.09 8.23-2.29 2.29-5.98 2.33-8.23.08l-43.31-43.31 22.61 5.98zm112.2-182.71c-13.15-36.3-33.78-56.51-61.35-61.8l50.93 189.39 47.7 13.31-37.28-140.9zm30.63 206.8c1.38 2.16 2.44 4.67 3.11 7.64l.35 7.31c.31 6.55 1.72 13.35-4.25 17.98-4 3.1-9.97 3.06-17.33.83-6.96-.32-13.66.71-20.06 3.18-6.2 2.39-12.12 6.11-17.76 11.25-16.02 17.76-22.73 40.24-14.7 70.21 8.36 34.95 28.17 51.72 54.43 58.24 17.56 2.37 31.15-2.41 41.6-12.84 15.94-15.91 21.23-36.48 19.35-58.4-1.2-13.89-4.98-28.22-9.52-43.88l-6.6-54.16-2.13-.55-.52.29-.12-.45-25.85-6.65zm-15 57.19c-14.43-3.02-24.95 5.67-30.9 18.08-4.78 9.95-5.6 21.81-2.69 35.46 2.45 11.51 10.21 26.26 20.87 35.12 20.63 17.15 41.03 3.91 47.46-19.03 2.86-10.2 2.61-20.84-1.01-31.95-2.44-7.53-6.22-15.58-11.39-22.35-5.73-7.48-13.14-13.4-22.34-15.33zm1.02-100.46c4.42-4.42 11.58-4.42 16 0s4.42 11.59 0 16c-4.42 4.42-11.58 4.42-16 0-4.42-4.41-4.42-11.58 0-16zm99.49-.04c-3.02-14.43 5.67-24.96 18.07-30.91 9.95-4.77 21.81-5.6 35.46-2.69 11.51 2.46 26.26 10.21 35.12 20.87 17.16 20.63 3.91 41.03-19.03 47.46-10.19 2.86-20.83 2.61-31.95-1-7.52-2.45-15.57-6.23-22.34-11.4-7.49-5.72-13.41-13.14-15.33-22.33z" />
+                    </svg>
                     <h3 class="services__title">Cortes de cabelo</h3>
-                    <p class="services__description">Oferecemos aos nossos clientes um serviço de excelente qualidade há muitos anos, com o melhor custo benefício da região.</p>
+                    <p class="services__description">Oferecemos aos nossos clientes um serviço de excelente qualidade há
+                        muitos anos, com o melhor custo benefício da região.</p>
                 </div>
 
                 <div class="services__content">
-                    <svg class="services__img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="64px" y="64px" viewBox="0 0 122.88 87.57" style="enable-background:new 0 0 122.88 87.57" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M25.29,38.29c-0.77,1.82-1.36,3.71-1.79,5.66C8.06,25.12,9.91,29.85,8.21,5.56L0,0 c0.28,32.54,3.89,81.46,47.72,87.32c3.66,0.49,8.32,0.25,13.92-0.68c28.17,7.05,57.66-28.25,59.99-53.17 c1.11-11.11,1.58-22.23,1.01-33.34l-7.96,5.68c-1.46,23.72-0.12,19.13-14.78,37.89c-4.44-17.59-34.45-23.75-38.09-17.15 C55.97,18.96,29.19,29.09,25.29,38.29L25.29,38.29z M36.85,49.91c0.58-3.92,2.29-6.46,3.95-8.89c3.21-4.69,5.24-4.38,9.92-3.65 c8.36,1.31,16.67,1.04,24.91-0.75c5.38-0.08,10.9,9.34,10.35,13.71c-0.52,4.12-8.42,9.05-12.64,9.02 c-3.77-0.02-7.74-2.05-11.91-6.15C52.99,61.87,44.34,60.92,36.85,49.91L36.85,49.91z"/></g></svg>
+                    <svg class="services__img" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="64px" y="64px" viewBox="0 0 122.88 87.57"
+                        style="enable-background:new 0 0 122.88 87.57" xml:space="preserve">
+                        <style type="text/css">
+                            .st0 {
+                                fill-rule: evenodd;
+                                clip-rule: evenodd;
+                            }
+                        </style>
+                        <g>
+                            <path class="st0"
+                                d="M25.29,38.29c-0.77,1.82-1.36,3.71-1.79,5.66C8.06,25.12,9.91,29.85,8.21,5.56L0,0 c0.28,32.54,3.89,81.46,47.72,87.32c3.66,0.49,8.32,0.25,13.92-0.68c28.17,7.05,57.66-28.25,59.99-53.17 c1.11-11.11,1.58-22.23,1.01-33.34l-7.96,5.68c-1.46,23.72-0.12,19.13-14.78,37.89c-4.44-17.59-34.45-23.75-38.09-17.15 C55.97,18.96,29.19,29.09,25.29,38.29L25.29,38.29z M36.85,49.91c0.58-3.92,2.29-6.46,3.95-8.89c3.21-4.69,5.24-4.38,9.92-3.65 c8.36,1.31,16.67,1.04,24.91-0.75c5.38-0.08,10.9,9.34,10.35,13.71c-0.52,4.12-8.42,9.05-12.64,9.02 c-3.77-0.02-7.74-2.05-11.91-6.15C52.99,61.87,44.34,60.92,36.85,49.91L36.85,49.91z" />
+                        </g>
+                    </svg>
                     <h3 class="services__title">Estilos de barba</h3>
-                    <p class="services__description">O homem moderno também cuida da sua barba e a barbearia Modern Cuts é o melhor lugar para fazer isso! Temos uma equipe com os melhores profissionais da cidade esperando você!</p>
+                    <p class="services__description">O homem moderno também cuida da sua barba e a barbearia Modern Cuts
+                        é o melhor lugar para fazer isso! Temos uma equipe com os melhores profissionais da cidade
+                        esperando você!</p>
                 </div>
 
                 <div class="services__content">
-                    <svg class="services__img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	                viewBox="0 0 308.385 308.385" style="enable-background:new 0 0 308.385 308.385;" xml:space="preserve">
-                    <g>
-		            <path d="M249.697,203.704h-23.499c-0.777-23.756-13.893-37.255-25.422-44.545c-13.359-8.448-27.175-10.247-27.757-10.319
+                    <svg class="services__img" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 308.385 308.385"
+                        style="enable-background:new 0 0 308.385 308.385;" xml:space="preserve">
+                        <g>
+                            <path d="M249.697,203.704h-23.499c-0.777-23.756-13.893-37.255-25.422-44.545c-13.359-8.448-27.175-10.247-27.757-10.319
 			        c-3.159-0.396-6.224,1.25-7.642,4.102c-1.419,2.851-0.882,6.286,1.337,8.568c7.02,7.222,7.451,13.325,5.686,16.357
 			        c-0.829,1.424-2.464,2.749-4.579,2.2c-2.301-0.599-4.669-1.701-7.412-2.979c-8.426-3.928-19.794-9.219-42.629-6.637v-49.771
 			        c0-0.071-0.001-0.143-0.003-0.214c-0.811-28.383-19.246-50.934-25.837-58.114v-32.56c0-12.715-10.344-23.059-23.058-23.059H51.438
@@ -131,8 +164,8 @@
 			        c-22.066,6.755-32.683,22.22-36.88,30.289H49.3c-2.133,0-4.166,0.908-5.588,2.498c-1.423,1.59-2.102,3.71-1.866,5.83
 			        c3.097,27.871,11.515,48.477,20.657,63.266H22.818z M226.462,236.899c-5.13,2.631-10.945,5.612-13.495,12.033
 			        c-11.036,27.784-27.796,40.957-32.867,44.453H98.906c-6.595-4.49-33.055-25.313-41.021-74.682h183.769
-			        C239.817,230.051,233.545,233.267,226.462,236.899z"/>
-		            <path d="M305.646,273.935l-38.209-152.15c11.907-14.67,14.879-40.86,6.844-64.573l-4.501-13.282
+			        C239.817,230.051,233.545,233.267,226.462,236.899z" />
+                            <path d="M305.646,273.935l-38.209-152.15c11.907-14.67,14.879-40.86,6.844-64.573l-4.501-13.282
 			        c-0.639-1.884-1.999-3.437-3.783-4.317c-1.783-0.881-3.845-1.017-5.728-0.379l-1.018,0.345l-11.82-34.507
 			        c-1.342-3.918-5.607-6.005-9.525-4.665c-3.919,1.343-6.007,5.607-4.665,9.526l11.803,34.459l-6.067,2.056l-11.797-34.44
 			        c-1.342-3.918-5.604-6.005-9.525-4.665c-3.919,1.343-6.007,5.608-4.665,9.526l11.78,34.393l-6.067,2.056l-11.773-34.373
@@ -141,11 +174,12 @@
 			        l4.5,13.283c8.436,24.895,28.471,41.897,44.763,46.77l62.066,144.375c1.221,2.84,3.987,4.54,6.894,4.54
 			        C298.98,283.264,307.226,282.773,305.646,273.935z M198.86,82.766l-2.094-6.18l61.215-20.739l2.093,6.179
 			        c7.468,22.039,2.772,43.886-6.081,52.273c-2.23,2.112-2.873,5.268-1.896,7.983l16.212,64.559l-26.283-61.138
-			        c-0.819-2.577-3.002-4.623-5.85-5.123C223.646,118.381,205.817,103.299,198.86,82.766z"/>
-	                </g>
+			        c-0.819-2.577-3.002-4.623-5.85-5.123C223.646,118.381,205.817,103.299,198.86,82.766z" />
+                        </g>
                     </svg>
                     <h3 class="services__title">Coloração & Lavagem</h3>
-                    <p class="services__description">Já nevou por aí? Porque na barbearia Modern Cuts o inverno já chegou há muito tempo, venha platinar seu cabelo e ficar na régua!</p>
+                    <p class="services__description">Já nevou por aí? Porque na barbearia Modern Cuts o inverno já
+                        chegou há muito tempo, venha platinar seu cabelo e ficar na régua!</p>
                 </div>
             </div>
         </section>
@@ -160,39 +194,45 @@
                     <img src="{% static 'imgs/photo1.jpg' %}" alt="" class="menu__img">
                     <h3 class="menu__name">Corte social</h3>
                     <span class="menu__detail">Cabelo</span>
-                    <a class="button menu__button" onclick="activeAnimation(1)" ><i class='bx bx-like i' id="1" onclick="animateIcon(event)" ></i></a>
+                    <a class="button menu__button" onclick="activeAnimation(1)"><i class='bx bx-like i' id="1"
+                            onclick="animateIcon(event)"></i></a>
                 </div>
 
                 <div class="menu__content">
                     <img src="{% static 'imgs/photo2.jpg' %}" alt="" class="menu__img">
                     <h3 class="menu__name">Barba lenhador</h3>
                     <span class="menu__detail">Barba</span>
-                    <a class="button menu__button" onclick="activeAnimation(2)" ><i class='bx bx-like i' id="2" onclick="animateIcon(event)" ></i></a>
+                    <a class="button menu__button" onclick="activeAnimation(2)"><i class='bx bx-like i' id="2"
+                            onclick="animateIcon(event)"></i></a>
                 </div>
 
                 <div class="menu__content">
                     <img src="{% static 'imgs/photo3.jpg' %}" alt="" class="menu__img">
                     <h3 class="menu__name">Fade + barba</h3>
                     <span class="menu__detail">Cabelo & Barba</span>
-                    <a class="button menu__button" onclick="activeAnimation(3)" ><i class='bx bx-like i' id="3" onclick="animateIcon(event)" ></i></a>
+                    <a class="button menu__button" onclick="activeAnimation(3)"><i class='bx bx-like i' id="3"
+                            onclick="animateIcon(event)"></i></a>
                 </div>
                 <div class="menu__content">
                     <img src="{% static 'imgs/photo4.jpg' %}" alt="" class="menu__img">
                     <h3 class="menu__name">Undercut</h3>
                     <span class="menu__detail">Cabelo</span>
-                    <a class="button menu__button" onclick="activeAnimation(4)" ><i class='bx bx-like i' id="4" onclick="animateIcon(event)" ></i></a>
+                    <a class="button menu__button" onclick="activeAnimation(4)"><i class='bx bx-like i' id="4"
+                            onclick="animateIcon(event)"></i></a>
                 </div>
                 <div class="menu__content">
                     <img src="{% static 'imgs/photo5.jpg' %}" alt="" class="menu__img">
                     <h3 class="menu__name">Barba espartano</h3>
                     <span class="menu__detail">Barba</span>
-                    <a class="button menu__button" onclick="activeAnimation(5)" ><i class='bx bx-like i' id="5"  onclick="animateIcon(event)" ></i></a>
+                    <a class="button menu__button" onclick="activeAnimation(5)"><i class='bx bx-like i' id="5"
+                            onclick="animateIcon(event)"></i></a>
                 </div>
                 <div class="menu__content">
                     <img src="{% static 'imgs/photo6.jpg' %}" alt="" class="menu__img">
                     <h3 class="menu__name">Undercut curto</h3>
                     <span class="menu__detail">Cabelo</span>
-                    <a class="button menu__button" onclick="activeAnimation(6)" ><i class='bx bx-like i' id="6"  onclick="animateIcon(event)" ></i></a>
+                    <a class="button menu__button" onclick="activeAnimation(6)"><i class='bx bx-like i' id="6"
+                            onclick="animateIcon(event)"></i></a>
                 </div>
             </div>
         </section>
@@ -208,7 +248,8 @@
                 </div>
 
                 <div class="contact__button">
-                    <a href="https://api.whatsapp.com/send?phone=5584981702904&text=Se%20você%20deseja%20agendar%20algum%20serviço,%20entre%20em%20contato%20conosco%20e%20atenderemos%20você%20rapidamente,%20com%20nosso%20serviço%20de%20chat%2024%20horas%20por%20dia,%207%20dias%20por%20semana." class="button">Entre em contato agora</a>
+                    <a href="https://api.whatsapp.com/send?phone=5584981702904&text=Se%20você%20deseja%20agendar%20algum%20serviço,%20entre%20em%20contato%20conosco%20e%20atenderemos%20você%20rapidamente,%20com%20nosso%20serviço%20de%20chat%2024%20horas%20por%20dia,%207%20dias%20por%20semana."
+                        class="button">Entre em contato agora</a>
                 </div>
             </div>
         </section>
@@ -241,7 +282,8 @@
                 <h3 class="footer__title">Informações</h3>
                 <ul>
                     <li><a href="#" class="footer__link">Evento</a></li>
-                    <li><a href="https://api.whatsapp.com/send?phone=5584981702904&text=Se%20você%20deseja%20agendar%20algum%20serviço,%20entre%20em%20contato%20conosco%20e%20atenderemos%20você%20rapidamente,%20com%20nosso%20serviço%20de%20chat%2024%20horas%20por%20dia,%207%20dias%20por%20semana." class="footer__link">Contate-nos</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=5584981702904&text=Se%20você%20deseja%20agendar%20algum%20serviço,%20entre%20em%20contato%20conosco%20e%20atenderemos%20você%20rapidamente,%20com%20nosso%20serviço%20de%20chat%2024%20horas%20por%20dia,%207%20dias%20por%20semana."
+                            class="footer__link">Contate-nos</a></li>
                     <li><a href="#" class="footer__link">Política de privacidade</a></li>
                     <li><a href="#" class="footer__link">Termos de serviços</a></li>
                 </ul>

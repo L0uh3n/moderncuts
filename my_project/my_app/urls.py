@@ -3,9 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('log_reg/', views.log_reg, name='log_reg'),
+    path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('login_error/', views.login_error, name='login_error'),
+    path('register/', views.register, name='register'),
     path('register_sucess/', views.register_sucess, name='register_sucess'),
     path('register_error/', views.register_error, name='register_error'),
     path('docad/', views.docad, name='docad'),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('doout/', views.doout, name='doout'),
     path('profile/', views.profile, name='profile'),
     path('doupdate/', views.doupdate, name='doupdate'),
+    path('update_sucess/', views.update_sucess, name='update_sucess'),
     path('coment/', views.coment, name='coment'),
     path('coment/<int:id>/editar/', views.edit_coment, name='edit_coment'),
     path('agend/', views.agend, name='agend'),

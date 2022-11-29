@@ -1,28 +1,73 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="pt-br" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
-    <title>Cadastrar</title>
+  <meta charset="UTF-8">
+  <!---<title> Responsive Registration Form | CodingLab </title>--->
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.ico' %}">
+
+  <title>Cadastro</title>
 </head>
+
 <body>
-    <div class="register_area">
-        <h1>CADASTRO</h1>
-        <form class="register_form" method="post" action="/docad/">
-            {% csrf_token %}
-            <div class="nothing">Nome: {{form.nome}}</div><br>
-            <div class="nothing">Sobrenome: {{form.sobrenome}}</div><br>
-            <div class="nothing">Data de nascimento: {{form.data_nasc}}</div><br>
-            <div class="nothing">Nome de usuario: {{form.usuario}}</div><br>
-            <div class="nothing">Senha: {{form.senha}}</div><br>
-            <div class="nothing">Email: {{form.email}}</div><br>
-            <div class="nothing">Número de telefone: {{form.num_telefone}}</div><br>
-            <button type="submit">Cadastrar</button>
-        </form>
+  <div class="container">
+    <div class="title">Cadastro</div>
+    <div class="content">
+      <form method="post" action="/docad/">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nome</span>
+            {{register.nome}}
+          </div>
+          <div class="input-box">
+            <span class="details">Sobrenome</span>
+            {{register.sobrenome}}
+          </div>
+          <div class="input-box">
+            <span class="details">Data de nascimento</span>
+            {{register.data_nasc}}
+          </div>
+          <div class="input-box">
+            <span class="details">Nome de usuário</span>
+            {{register.usuario}}
+          </div>
+          <div class="input-box">
+            <span class="details">E-mail</span>
+            {{register.email}}
+          </div>
+          <div class="input-box">
+            <span class="details">Senha</span>
+            {{register.senha}}
+          </div>
+          <div class="input-box">
+            <span class="details">Confrimar senha</span>
+            {{register.confirma_senha}}
+          </div>
+          <div class="input-box">
+            <span class="details">Número de telefone</span>
+            {{register.num_telefone}}
+          </div>
+        </div>
+
+        <div class="button">
+          <input id="cad-button" type="submit" value="Register">
+        </div>
+      </form>
+      <div class="signup-login">
+        <span class="text">Já possui um login?
+          <a href="{% url 'login' %}" class="text login-link">Logar agora</a>
+        </span>
+      </div>
     </div>
+  </div>
+
 </body>
-<script src="{% static 'scripts/register.js' %}"></script>
+<script type="text/javascript" src="{% static 'scripts/register.js' %}"></script>
+
 </html>

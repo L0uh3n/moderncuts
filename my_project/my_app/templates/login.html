@@ -1,24 +1,45 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <!---<title> Responsive Registration Form | CodingLab </title>--->
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.ico' %}">
+
+  <title>Login</title>
 </head>
+
 <body>
-    <div class="login_area">
-        <h1>LOGIN</h1>
-        <form class="login_form" method="post" action="/dolog/">
-            {% csrf_token %}
-            <div class="form-group mt-4">Nome de usuario: {{login.usuario}}</div><br>
-            <div class="form-group mt-4">Senha: {{login.senha}}</div><br>
-            <button type="submit">Entrar</button>
-        </form>
-        <p>Ainda não possui uma conta?</p>
-        <a href="{% url 'register' %}"><button type="button">Criar uma conta</button></a>
+  <div class="container">
+    <div class="title">Login</div>
+    <div class="content">
+      <form method="post" action="/dolog/">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nome de usuário</span>
+            {{login.usuario}}
+          </div>
+          <div class="input-box">
+            <span class="details">Senha</span>
+            {{login.senha}}
+          </div>
+          <div class="button">
+            <input type="submit" value="Entrar">
+          </div>
+      </form>
+      <div class="login-signup">
+        <span class="text">Não possui uma conta?
+          <a href="{% url 'register' %}" class="text signup-link">Cadastre-se agora</a>
+        </span>
+      </div>
     </div>
+  </div>
+
 </body>
 </html>
