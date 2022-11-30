@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="pt-br" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <!---<title> Responsive Registration Form | CodingLab </title>--->
+  <link rel="stylesheet" href="{% static 'css/agend.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.ico' %}">
+
+  <title>Agendamento</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Agendar</div>
+    <div class="content">
+      <form method="post" action="/agend/">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nome</span>
+            {{agend.nome}}
+          </div>
+          <div class="input-box">
+            <span class="details">Sobrenome</span>
+            {{agend.sobrenome}}
+          </div>
+          <div class="input-box">
+            <span class="details">Número de telefone</span>
+            {{agend.num_telefone}}
+          </div>
+          <div class="input-box-text">
+            <span class="details">Observações</span>
+            {{agend.observacoes}}
+          </div>
+          <div class="input-box">
+            <span class="details">Data</span>
+            {{agend.data}}
+          </div>
+          <div class="input-box">
+            <span class="details">Hora</span>
+            {{agend.hora}}
+          </div>
+        </div>
+        <div class="gender-details">
+          <span class="gender-title">Servicos</span>
+          <div class="category">
+            <div class="history">
+              <fieldset class="servicos">
+                {% for s in servico %}
+                <p><input type="checkbox" id="{{s.id}}" name="servico-{{s.id}}"> <b>R${{s.valor}} -</b> {{s.servico}}
+                </p>
+                {% endfor %}
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        {% if history %}
+        <div class="history-details">
+          <span class="gender-title">Histórico</span>
+          <div class="category">
+            <div class="history">
+              {% for c in history %}
+              <fieldset class="informacoes">
+                <p>
+                  {{c.data}}
+                </p>
+                <p>
+                  {{c.hora}}
+                </p>
+                <a class="edit_delete" href="{% url 'edit_agend' c.id %}">EDITAR</a>
+                |
+                <a class="edit_delete" href="{% url 'agend_delete' c.id %}">DELETAR</a>
+              </fieldset>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="button">
+          <input id="cad-button" type="submit" value="Agendar">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="{% static 'scripts/register.js' %}"></script>
+
+</html>

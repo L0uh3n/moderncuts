@@ -1,3 +1,12 @@
+// regex nome
+function regex_nome(evento) {
+    const padrao = /[A-Z, a-z, '', á, é, í, ó, ú, ã, õ, â, ê, ô]/
+    var tecla = evento.key
+    if (!padrao.test(tecla)) {
+        return evento.preventDefault()
+    }
+}
+
 // regex phone number
 function regex_telefone(evento) {
     const padrao = /[0-9]/

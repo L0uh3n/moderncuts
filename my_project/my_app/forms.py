@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from my_app.models import usuario, comentario, agendamento
+from my_app.models import usuario, comentario, agendamento, servicos
 
 # Create the form class.
 class ClientForm(ModelForm):
@@ -30,9 +30,32 @@ class ComentForm(ModelForm):
         model = comentario
         fields = ['comentario']
 
-# class AgendForm(ModelForm):
-#     data = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-#     num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '(DDD) 9123-4567', 'onkeypress': 'regex_telefone(event)', 'maxlength': '15'}))
-#     class Meta:
-#         model = agendamento
-#         fields = ['nome', 'sobrenome', 'num_telefone', 'data', 'hora', 'observacoes']
+TIME_CHOICES = [
+    ("08:00 às 09:00", "08:00 às 09:00"),
+    ("09:00 às 10:00", "09:00 às 10:00"),
+    ("10:00 às 11:00", "10:00 às 11:00"),
+    ("11:00 às 12:00", "11:00 às 12:00"),
+    ("13:00 às 14:00", "13:00 às 14:00"),
+    ("14:00 às 15:00", "14:00 às 15:00"),
+    ("15:00 às 16:00", "15:00 às 16:00"),
+    ("16:00 às 17:00", "16:00 às 17:00"),
+    ("17:00 às 18:00", "17:00 às 18:00"),
+    ("18:00 às 19:00", "18:00 às 19:00"),
+]
+
+class AgendamentoForm(ModelForm):
+    nome = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome', 'required' : 'True'}))
+    sobrenome = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu sobrenome', 'required' : 'True'}))
+    num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Digite seu número de telefone', 'onkeypress': 'regex_telefone(event)', 'maxlength': '15', 'required' : 'True'}))
+    data = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'required' : 'True'}))
+    hora = forms.ChoiceField(choices = TIME_CHOICES,)
+    class Meta:
+        model = agendamento
+        fields = [ 'nome', 'sobrenome', 'num_telefone', 'data', 'hora', 'observacoes']
+
+class ServicosForm(ModelForm):
+    servico = forms.CharField() 
+    valor = forms.IntegerField()
+    class Meta:
+        model = servicos
+        fields = ['servico', 'valor']

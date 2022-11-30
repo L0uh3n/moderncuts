@@ -47,7 +47,7 @@
                     <li class="nav__item"><a href="#services" class="nav__link">Serviços</a></li>
                     <li class="nav__item"><a href="#gallery" class="nav__link">Galeria</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contatos</a></li>
-                    <li class="nav__item"><a href="" class="nav__link">Agendar</a></li>
+                    <!-- <li class="nav__item"><a href="{% url 'agend' %}" class="nav__link">Agendar</a></li> -->
                     {% if custom == "Entrar" %}
                         <li class="nav__item"><a href="{% url 'login' %}" class="nav__button">Login</a></li>
                     {% endif %}
@@ -82,7 +82,7 @@
                 <div class="home__data">
                     <h1 class="home__title">Modern Cuts</h1>
                     <h2 class="home__subtitle">Seu cabelo, sua barba, seu estilo. <br> A escolha é sua!</h2>
-                    <a href="#" class="button">Agendar</a>
+                    <a href="{% url 'agend' %}" class="button">Agendar</a>
                 </div>
 
                 <img src="{% static 'imgs/cut4.png' %}" alt="" class="home__img">
@@ -271,21 +271,21 @@
             <div class="footer__content">
                 <h3 class="footer__title">Serviços</h3>
                 <ul>
-                    <li><a href="#" class="footer__link">Cabelo</a></li>
-                    <li><a href="#" class="footer__link">Barba</a></li>
-                    <li><a href="#" class="footer__link">Coloração</a></li>
-                    <li><a href="log_reg.html" class="footer__link">Agendar agora</a></li>
+                    <li><a href="#services" class="footer__link">Cabelo</a></li>
+                    <li><a href="#services" class="footer__link">Barba</a></li>
+                    <li><a href="#services" class="footer__link">Coloração</a></li>
+                    <li><a href="{% url 'agend' %}" class="footer__link">Agendar agora</a></li>
                 </ul>
             </div>
 
             <div class="footer__content">
                 <h3 class="footer__title">Informações</h3>
                 <ul>
-                    <li><a href="#" class="footer__link">Evento</a></li>
+                    <li><a class="footer__link">Evento</a></li>
                     <li><a href="https://api.whatsapp.com/send?phone=5584981702904&text=Se%20você%20deseja%20agendar%20algum%20serviço,%20entre%20em%20contato%20conosco%20e%20atenderemos%20você%20rapidamente,%20com%20nosso%20serviço%20de%20chat%2024%20horas%20por%20dia,%207%20dias%20por%20semana."
                             class="footer__link">Contate-nos</a></li>
-                    <li><a href="#" class="footer__link">Política de privacidade</a></li>
-                    <li><a href="#" class="footer__link">Termos de serviços</a></li>
+                    <li><a class="footer__link">Política de privacidade</a></li>
+                    <li><a class="footer__link">Termos de serviços</a></li>
                 </ul>
             </div>
 

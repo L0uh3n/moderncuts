@@ -1,0 +1,1 @@
+setTimeout(function () { window.location = '/agend'; }, 3000);

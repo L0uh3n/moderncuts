@@ -14,18 +14,21 @@ class usuario(models.Model):
 class comentario(models.Model):
     comentario = models.TextField (max_length=254)
     usuario = models.ForeignKey(usuario, on_delete = models.CASCADE)
-    
-class servicos(models.Model):
-    servico = models.CharField(max_length=50)
-    valor_servico = models.DecimalField(max_digits=5, decimal_places=2)
 
 class agendamento(models.Model):
-    servico = models.ForeignKey(servicos, on_delete = models.CASCADE)
-    usuario = models.ForeignKey(usuario, on_delete = models.CASCADE)
+    usuario = models.ForeignKey(usuario, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=50)
+    sobrenome = models.CharField(max_length=100)
+    num_telefone = models.CharField(max_length=15)
     data = models.DateField()
-    hora = models.TimeField()
-    observacoes = models.TextField(max_length=254, null=True)
+    hora = models.CharField(max_length=120)
+    observacoes = models.TextField(max_length=255, blank=True)
+
+class servicos(models.Model):
+    servico = models.CharField(max_length=120) 
+    valor = models.IntegerField()
+    preenchido = models.ManyToManyField(agendamento, through='servicos_agendamento')
 
 class servicos_agendamento(models.Model):
-    servico = models.ForeignKey(servicos, on_delete = models.CASCADE)
-    agendamento = models.ForeignKey(agendamento, on_delete = models.CASCADE)
+    servico = models.ForeignKey(servicos, on_delete=models.CASCADE)
+    agendamento = models.ForeignKey(agendamento, on_delete=models.CASCADE)
