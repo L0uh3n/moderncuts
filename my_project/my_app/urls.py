@@ -19,6 +19,6 @@ urlpatterns = [
     path('coment/<int:id>/editar/', views.edit_coment, name='edit_coment'),
     path('agend/', views.agend, name='agend'),
     path('agend_sucess', views.agend_sucess, name='agend_sucess'),
-    path('agendamento/<int:id>/editar',views.edit_agend, name='edit_agend'),
-    path('agend_delete/<int:id>/deletar',views.agend_delete, name='agend_delete'),
+    path('agend/<int:id>/editar',views.edit_agend, name='edit_agend'),
+    path('agend/<int:id>/deletar',views.agend_delete, name='agend_delete'),
 ]

@@ -142,21 +142,17 @@ def agend(request):
 def agend_sucess (request):
 	return render(request, 'agend_sucess.html')
 
-# servicos_agendamento.objects.create(servico=servicos.objects.get(id=sid[1]), agendamento=c)
-
 def edit_agend(request, id):
-	s = servicos.objects.get(id=servicos_agendamento.objects.get(agendamento_id=agendamento.objects.get(usuario_id=id)))
 	c = agendamento.objects.get(id=id)
+	sa = servicos_agendamento.objects.filter(servico_id=c)
+	lista_servicos = {}
 	if request.method == 'POST':
-		e = ServicosForm(request.POST, instance=s)
 		f = AgendamentoForm(request.POST, instance=c)
-		e.save()
 		f.save()
 		return redirect('agend')
 	else:
-		e = ServicosForm(instance=s)
 		f = AgendamentoForm(instance=c)
-		return render(request, 'agend.html', {'agend':f}, {'servico':e})
+		return render(request, 'agend.html', {'agend':f}, lista_servicos)
 
 def agend_delete(request, id):
 	s = servicos_agendamento.objects.filter(servico=servicos.objects.get(id=id))

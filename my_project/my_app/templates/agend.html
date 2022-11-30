@@ -52,8 +52,9 @@
             <div class="history">
               <fieldset class="servicos">
                 {% for s in servico %}
-                <p><input type="checkbox" id="{{s.id}}" name="servico-{{s.id}}"> <b>R${{s.valor}} -</b> {{s.servico}}
-                </p>
+                  {% for a in lista_servicos %}
+                  <p> <input {% %} type="checkbox" id="{{s.id}}" name="servico-{{s.id}}"> <b> R${{s.valor}} -</b> {{s.servico}} </p>
+                  {% endfor %}
                 {% endfor %}
               </fieldset>
             </div>
