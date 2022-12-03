@@ -36,10 +36,10 @@ function regex_telefone(evento) {
 
 // confirmar senha
 let input1 = document.getElementById("id_senha");
-input1.setAttribute("onkeyup", "confereSenha()");
+input1.setAttribute("onkeyup", "confereSenha(event)");
 
 let input2 = document.getElementById("id_confirma_senha");
-input2.setAttribute("onkeyup", "confereSenha()");
+input2.setAttribute("onkeyup", "confereSenha(event)");
 
 function confereSenha() {
     var senha1 = document.getElementById("id_senha");

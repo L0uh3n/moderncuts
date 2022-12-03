@@ -145,7 +145,8 @@ def agend_sucess (request):
 def edit_agend(request, id):
 
 	c = agendamento.objects.get(id=id)
-	sa = servicos_agendamento.objects.filter(servico_id=c)
+	s = servicos.objects.get(id=id)
+	sa = servicos_agendamento.objects.filter(servico_id=s)
 	lista_servicos = {}
 	
 	# lista_servicos['servicos'] = sa
