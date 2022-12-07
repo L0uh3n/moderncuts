@@ -19,9 +19,11 @@ function regex_telefone(evento) {
 function regex_telefone(evento) {
     const padrao = /[0-9]/
     var tecla = evento.key
+
     if (!padrao.test(tecla)) {
         return evento.preventDefault()
     }
+
     let txt = document.getElementById('id_num_telefone')
     if (txt.value.length == '') {
         txt.value += "("
@@ -42,29 +44,45 @@ function regex_telefone(evento) {
 
 // confirmar senha
 let input1 = document.getElementById("id_senha");
-input1.setAttribute("onkeyup", "confereSenha(event)");
+input1.setAttribute("onchange", "confereSenha(event)");
 
 let input2 = document.getElementById("id_confirma_senha");
 input2.setAttribute("onkeyup", "confereSenha(event)");
 
 function confereSenha() {
-    var senha1 = document.getElementById("id_senha");
-    var senha2 = document.getElementById("id_confirma_senha");
-    var btn = document.getElementById("cad-button");
+    
+    const senha1 = document.getElementById("id_senha"), 
+    senha2 = document.getElementById("id_confirma_senha");
 
     if (senha1.value != senha2.value || senha2.value != senha1.value) {
-        senha2.setCustomValidity("Senhas diferentes!")
-        btn.disabled = true
+        senha2.setCustomValidity('Senhas não conferem!');
     } else {
-        senha2.setCustomValidity("")
-        btn.disabled = false
+        senha2.setCustomValidity('');
     }
 
-    if (senha2.value == "") {
-        senha2.setCustomValidity("Prencha esse campo!")
-    }
-
-    if (senha1.value == "" || senha2.value == "") {
-        btn.disabled = true
-    }
+    senha2.reportValidity();
 };
+
+const pwShowHide = document.querySelectorAll(".showHidePw"),
+    pwFields = document.querySelectorAll(".password");
+
+//   js code to show/hide password and change icon
+pwShowHide.forEach(eyeIcon => {
+    eyeIcon.addEventListener("click", () => {
+        pwFields.forEach(pwField => {
+            if (pwField.type === "password") {
+                pwField.type = "text";
+
+                pwShowHide.forEach(icon => {
+                    icon.classList.replace("uil-eye-slash", "uil-eye");
+                })
+            } else {
+                pwField.type = "password";
+
+                pwShowHide.forEach(icon => {
+                    icon.classList.replace("uil-eye", "uil-eye-slash");
+                })
+            }
+        })
+    })
+})

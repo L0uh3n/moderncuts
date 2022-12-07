@@ -15,12 +15,13 @@ body{
 }
 
 .container{
-  max-width: 420px;
+  max-width: 430px;
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  margin: 0 20px;
 }
 .container .title{
   font-size: 25px;
@@ -37,6 +38,7 @@ body{
   border-radius: 5px;
   background: linear-gradient(135deg, #ce2613, #161616);
 }
+
 .content form .user-details{
   margin: 20px 0 12px 0;
 }
@@ -48,6 +50,33 @@ form .input-box span.details{
   font-weight: 500;
   margin-bottom: 5px;
 }
+
+.pass-shit {
+  position: relative;
+}
+
+.input-box i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  transition: all 0.2s ease;
+}
+
+.input-box input:is(:focus, :valid) ~ i{
+  color: #161616;
+}
+
+.input-box i.icon{
+  left: 0;
+}
+.input-box i.showHidePw{
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
 .user-details .input-box input{
   height: 45px;
   width: 100%;

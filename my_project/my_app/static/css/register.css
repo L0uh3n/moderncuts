@@ -53,6 +53,39 @@ form .input-box span.details{
   margin-bottom: 5px;
 }
 
+.form .input-box{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.pass-shit {
+  position: relative;
+}
+
+.input-box i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  transition: all 0.2s ease;
+}
+
+.input-box input:is(:focus, :valid) ~ i{
+  color: #161616;
+}
+
+.input-box i.icon{
+  left: 0;
+}
+.input-box i.showHidePw{
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
 .user-details .input-box input{
   height: 45px;
   width: 100%;

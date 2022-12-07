@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ===== Iconscout CSS ===== -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
   <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.ico' %}">
 
   <title>Login</title>
@@ -27,7 +30,10 @@
           </div>
           <div class="input-box">
             <span class="details">Senha</span>
-            {{login.senha}}
+            <div class="pass-shit">
+              {{login.senha}}
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
           </div>
           <div class="button">
             <input type="submit" value="Entrar">
@@ -42,4 +48,6 @@
   </div>
 
 </body>
+<script type="text/javascript" src="{% static 'scripts/login.js' %}"></script>
+
 </html>

@@ -9,8 +9,8 @@ class ClientForm(ModelForm):
     data_nasc = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'required' : 'True'}))
     usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome de usuário', 'required' : 'True'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' : 'Digite seu e-mail', 'required' : 'True'}))
-    senha = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Crie sua senha', 'maxlength': '30', 'required' : 'True'}))
-    confirma_senha = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Confirme sua senha', 'maxlength': '30', 'required' : 'True'}))
+    senha = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'password', 'placeholder' : 'Crie sua senha', 'maxlength': '30', 'required' : 'True'}))
+    confirma_senha = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'password', 'placeholder' : 'Confirme sua senha', 'maxlength': '30', 'required' : 'True'}))
     num_telefone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Digite seu número de telefone', 'onkeypress': 'regex_telefone(event)', 'maxlength': '15', 'required' : 'True'}))
     class Meta:
         model = usuario
@@ -19,7 +19,7 @@ class ClientForm(ModelForm):
 
 class LoginForm(ModelForm):
     usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Digite seu nome de usuário', 'required' : 'True'}))
-    senha = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Digite sua senha', 'maxlength': '30','required' : 'True'}))
+    senha = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'password', 'placeholder' : 'Digite sua senha', 'maxlength': '30','required' : 'True'}))
     class Meta:
         model = usuario
         widgets = {'user': forms.TextInput(), 'password': forms.PasswordInput(),}

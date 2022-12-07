@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="{% static 'css/register.css' %}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ===== Iconscout CSS ===== -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+
   <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.ico' %}">
 
   <title>Perfil</title>
@@ -39,11 +45,17 @@
           </div>
           <div class="input-box">
             <span class="details">Senha</span>
-            {{perfil.senha}}
+            <div class="pass-shit">
+              {{perfil.senha}}
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
           </div>
           <div class="input-box">
             <span class="details">Confrimar senha</span>
-            {{perfil.confirma_senha}}
+            <div class="pass-shit">
+              {{perfil.confirma_senha}}
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
           </div>
           <div class="input-box">
             <span class="details">Número de telefone</span>

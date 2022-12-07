@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="{% static 'css/register.css' %}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ===== Iconscout CSS ===== -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
   <!-- Boxicons CSS -->
   <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
 
@@ -46,11 +49,17 @@
           </div>
           <div class="input-box">
             <span class="details">Senha</span>
-            {{register.senha}}
+            <div class="pass-shit">
+              {{register.senha}}
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
           </div>
           <div class="input-box">
             <span class="details">Confirmar senha</span>
-            {{register.confirma_senha}}
+            <div class="pass-shit">
+              {{register.confirma_senha}}
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
           </div>
           <div class="input-box">
             <span class="details">Número de telefone</span>
