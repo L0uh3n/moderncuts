@@ -55,13 +55,29 @@ function confereSenha() {
     senha2 = document.getElementById("id_confirma_senha");
 
     if (senha1.value != senha2.value || senha2.value != senha1.value) {
-        senha2.setCustomValidity('Senhas não conferem!');
+        senha2.setCustomValidity('Senhas não conferem.');
     } else {
         senha2.setCustomValidity('');
     }
 
     senha2.reportValidity();
 };
+
+// verifica tamanho da senha
+let senha1 = document.getElementById("id_senha");
+senha1.setAttribute("onkeyup", "passLength(event)");
+
+function passLength() {
+    const senha = document.getElementById("id_senha");
+
+    if (senha.value.length < 6) {
+        senha.setCustomValidity('A senha deve ter no mínimo 6 caracteres.');
+    } else {
+        senha.setCustomValidity('')
+    }
+
+    senha.reportValidity();
+}
 
 const pwShowHide = document.querySelectorAll(".showHidePw"),
     pwFields = document.querySelectorAll(".password");

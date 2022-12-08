@@ -50,14 +50,19 @@
           <span class="gender-title">Servicos</span>
           <div class="category">
             <div class="history">
-              <fieldset class="servicos">
+              <div class="services">
                 {% for s in servico %}
-                <p> <input type="checkbox" id="{{s.id}}" name="servico-{{s.id}}"> <b> R${{s.valor}} -</b> {{s.servico}}
-                </p>
+                <label class="services_cont"> <b> R$ {{s.valor}} -</b> {{s.servico}}
+                  <input type="checkbox" id="{{s.id}}" name="servico-{{s.id}}">
+                  <span class="checkmark"></span>
+                </label>
                 {% endfor %}
-              </fieldset>
+              </div>
             </div>
           </div>
+        </div>
+        <div class="button">
+          <input id="cad-button" type="submit" value="Agendar">
         </div>
         {% if history %}
         <div class="history-details">
@@ -72,8 +77,8 @@
                 <p>
                   {{c.hora}}
                 </p>
-                <a class="edit_delete" href="{% url 'edit_agend' c.id %}">EDITAR</a>
-                |
+                <!-- <a class="edit_delete" href="{% url 'edit_agend' c.id %}">EDITAR</a>
+                | -->
                 <a class="edit_delete" href="{% url 'agend_delete' c.id %}">DELETAR</a>
               </fieldset>
               {% endfor %}
@@ -83,9 +88,6 @@
         </div>
         {% endif %}
 
-        <div class="button">
-          <input id="cad-button" type="submit" value="Agendar">
-        </div>
       </form>
     </div>
   </div>
